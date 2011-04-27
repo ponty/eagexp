@@ -1,4 +1,4 @@
-from eag2img import export_eagle_image
+from eagexp.image import export_image
 from nose.tools import eq_
 from path import path
 from unittest import TestCase
@@ -7,18 +7,17 @@ import tempfile
 
 def export(fin, **kwargs):
     fout = tempfile.NamedTemporaryFile(suffix='.png', delete=0)
-    export_eagle_image(fin, fout.name, **kwargs)
+    export_image(fin, fout.name, **kwargs)
     #path(fout.name).remove()
 
-class Test(TestCase):
-       
+class Test(TestCase):       
     def test(self):
-        eq_(0, 0)
         sch_ls = path('~/.eagle/projects/examples/').expand().walkfiles('*.sch')
         brd_ls = path('~/.eagle/projects/examples/').expand().walkfiles('*.brd')
         sch_ls = list(sch_ls)
         brd_ls = list(brd_ls)
         all = sch_ls + brd_ls
+
         for x in all:
             export(x)
         
