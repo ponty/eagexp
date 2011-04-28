@@ -51,6 +51,7 @@ install_requires = [
     'easyprocess',
     'entrypoint2',
     'pyvirtualdisplay',
+    'PIL',
     ]
 # compatible with distutils of python 2.3+ or later
 setup(
@@ -90,7 +91,7 @@ if ALL_TASKS_LOADED:
                                      '*.gz' , 
                                      'nosetests.xml', 
                                      'sloccount.sc', 
-                                     '*.pdf', 
+                                     '*.pdf','*.tex', 
                                      '*.png',
                                      ]
     
