@@ -18,9 +18,11 @@ Usage
 Export from python code
 -------------------------------------------
 
-Example for image export with 3 different DPI setting:
+Example:
 
 .. literalinclude:: ../eagexp/examples/image_example.py
+
+Start the example program:
 
 ..  [[[cog
 ..  f = 'python -m eagexp.examples.image_example'
@@ -41,12 +43,18 @@ Result:
 
 .. image::  api_brd_150.png
 
+.. image::  api_brd_mirror.png
+
+.. image::  api_brd_layer.png
+
+.. image::  api_brd_command.png
+
 
 Example for partlist export:
 
 .. literalinclude:: ../eagexp/examples/partlist_example.py
 
-Output:
+Start the example program:
 
 .. program-output:: python -m eagexp.examples.partlist_example
     :prompt:
@@ -54,7 +62,10 @@ Output:
 Export schematic from command-line
 ----------------------------------------------
 
-Image:
+Export image
++++++++++++++
+
+Start the eagexp module directly with python:
 
 ..  [[[cog
 ..  f = 'cli_sch.png'
@@ -73,7 +84,10 @@ Result:
 .. image::  cli_sch.png
     :scale: 20%
 
-Partlist:
+Export partlist
+++++++++++++++++
+
+Start the eagexp module directly with python:
 
 .. program-output:: python -m eagexp.partlist ~/.eagle/projects/examples/singlesided/singlesided.sch
     :prompt:
@@ -81,6 +95,10 @@ Partlist:
 Export board from command-line
 -------------------------------------------
 
+Export image
++++++++++++++
+
+Start the eagexp module directly with python:
 
 ..  [[[cog
 ..  f = 'cli_brd.png'
@@ -98,7 +116,10 @@ Result:
 
 .. image::  cli_brd.png
 
-Partlist:
+Export partlist
+++++++++++++++++
+
+Start the eagexp module directly with python:
 
 .. program-output:: python -m eagexp.partlist ~/.eagle/projects/examples/singlesided/singlesided.brd
     :prompt:

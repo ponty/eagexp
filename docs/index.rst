@@ -1,4 +1,4 @@
-eagexp can convert eagle schematic and board to image.
+eagexp can convert eagle schematic and board to image or partlist.
 
 Date: |today|
 

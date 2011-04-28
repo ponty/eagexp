@@ -28,7 +28,7 @@ Basic usage
 How it works
 ========================
 
-#. start Xvfb headless X server using PyVirtualDisplay_
+#. start Xvfb_ headless X server using PyVirtualDisplay_
 #. redirect eagle display to Xvfb server by setting $DISPLAY variable.
 #. start eagle_ with EXPORT and QUIT commands
 
@@ -39,6 +39,7 @@ Installation
 General
 --------
 
+ * install eagle_
  * install setuptools_
  * install PyVirtualDisplay_ , xvfb_ , xephyr_ (optional for background processing)
  * install the program::
@@ -51,6 +52,7 @@ Ubuntu
 ----------
 ::
 
+    sudo apt-get install eagle
     sudo apt-get install python-setuptools
 
     # optional for background processing
