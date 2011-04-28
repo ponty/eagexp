@@ -42,9 +42,10 @@ def parse_partlist(str):
     hind = header_index(lines)
     
     header_line = lines[hind]
-    header = header_line.split()
+    header = header_line.split('  ')
+    header = filter(len, header)
     positions = [header_line.index(x) for x in header]
-    header = [x.lower() for x in header]
+    header = [x.strip().split()[0].lower() for x in  header]
     
     
     data_lines = lines[hind + 1:]
