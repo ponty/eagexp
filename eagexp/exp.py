@@ -52,6 +52,7 @@ def export_eagle(input, output, output_type, timeout=60, commands=[], showgui=Fa
     
     for x in commands:
         script += x
+        script += ';'
         undo += 1
     
     # redraw
