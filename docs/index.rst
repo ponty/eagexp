@@ -1,6 +1,7 @@
-eagexp can convert eagle schematic and board to image or partlist.
+**eagexp**
 
-Date: |today|
+:Date: |today|
+:PDF: `eagexp.pdf <eagexp.pdf>`_
 
 Contents:
 
@@ -10,6 +11,7 @@ Contents:
     readme
     usage
     api
+    dev
 
 Indices and tables
 ==================

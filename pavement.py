@@ -52,6 +52,7 @@ install_requires = [
     'entrypoint2',
     'pyvirtualdisplay',
     'PIL',
+    'unipath'
     ]
 # compatible with distutils of python 2.3+ or later
 setup(
@@ -99,10 +100,19 @@ if ALL_TASKS_LOADED:
     
     @task
     @needs('sloccount', 'cog', 'html', 'pdf', 'sdist', 'nose')
-    def hudson():
+    def alltest():
+        'all tasks to check'
         pass
     
     @task
     @needs('sphinxcontrib.paverutils.html')
     def html():
         pass
+
+    @task
+    @needs('sphinxcontrib.paverutils.pdf')
+    def pdf():
+        fpdf = list(path('docs/_build/latex').walkfiles('*.pdf'))[0]
+        d=path('docs/_build/html')
+        d.makedirs()
+        fpdf.copy(d)
