@@ -8,13 +8,8 @@ import tempfile
 
 
 def export(fin, **kwargs):
-    #fout = tempfile.NamedTemporaryFile(suffix='.partlist', delete=0)
-    #fout = Path(fout.name)
-    #export_partlist(fin, fout, **kwargs)
-    #data = parse_partlist(fout.read_file())
     pp(raw_partlist(fin, **kwargs))
     pp(structured_partlist(fin, **kwargs))
-    #path(fout.name).remove()
     
 class Test(TestCase):       
     def test(self):

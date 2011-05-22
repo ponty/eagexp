@@ -1,6 +1,7 @@
 from eagexp.image import export_image
 from nose.tools import eq_
 from path import path
+from unipath.path import Path
 from unittest import TestCase
 import tempfile
 
@@ -8,7 +9,9 @@ VISIBLE=0
 
 def export(fin, **kwargs):
     fout = tempfile.NamedTemporaryFile(prefix='eagexp_test_', suffix='.png', delete=0)
-    export_image(fin, fout.name, showgui=VISIBLE, **kwargs)
+    fout=Path(fout.name)
+    export_image(fin, fout, showgui=VISIBLE, **kwargs)
+    assert fout.exists() 
     #path(fout.name).remove()
 
 class Test(TestCase):       
