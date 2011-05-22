@@ -1,6 +1,8 @@
 from eagexp import __version__
-from eagexp.exp import export_eagle
+from eagexp.cmd import command_eagle
+from eagexp.exp import export_command
 from entrypoint2 import entrypoint
+from unipath.path import Path
 import logging
 import os
 import tempfile
@@ -20,9 +22,12 @@ def export_partlist_to_file(input, output, timeout=20, showgui=False):
     :param showgui: Bool, True -> do not hide eagle GUI
     :rtype: None    
     '''
-    commands = []
-    export_eagle(input=input, output=output, output_type='partlist',
-                 timeout=timeout, commands=commands, showgui=showgui)
+    input=Path(input).expand().absolute()
+    output=Path(output).expand().absolute()
+
+    commands = export_command(output=output, output_type='partlist')
+    command_eagle(input=input, timeout=timeout, commands=commands, showgui=showgui)
+
     
 def header_index(lines):
     for i, x in enumerate(lines):
@@ -69,10 +74,10 @@ def raw_partlist(input, timeout=20, showgui=False):
     :rtype: string    
     '''
     
-    output = tempfile.NamedTemporaryFile(prefix='eagexp_', suffix='.partlist', delete=0)
-    export_partlist_to_file(input=input, output=output.name, timeout=timeout, showgui=showgui)
-    s = open(output.name).read()
-    os.remove(output.name)
+    output = tempfile.NamedTemporaryFile(prefix='eagexp_', suffix='.partlist', delete=0).name
+    export_partlist_to_file(input=input, output=output, timeout=timeout, showgui=showgui)
+    s = open(output).read()
+    os.remove(output)
     return s
 
 def structured_partlist(input, timeout=20, showgui=False):

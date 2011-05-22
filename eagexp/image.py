@@ -1,7 +1,9 @@
-import Image
 from eagexp import __version__
-from eagexp.exp import export_eagle
+from eagexp.cmd import command_eagle
+from eagexp.exp import export_command
 from entrypoint2 import entrypoint
+from unipath.path import Path
+import Image
 import ImageOps
 import logging
 import tempfile
@@ -15,7 +17,7 @@ log.debug('version=' + __version__)
 def export_image(input, output, timeout=20, palette='white', resolution=150, layers=None, command=None, mirror=False, showgui=False):
     '''    
     Exporting eagle .sch or .brd file into image file.
-    GUI is not displayed if PyVirtualDisplay is installed.
+    GUI is not displayed if ``pyvirtualdisplay`` is installed.
     If export is blocked somehow (e.g. popup window is displayed) then after timeout operation is canceled with exception.
     Problem can be investigated by setting 'showgui' flag.
         
@@ -50,6 +52,8 @@ def export_image(input, output, timeout=20, palette='white', resolution=150, lay
     :param mirror: Bool
     :rtype: None
     '''
+    input=Path(input).expand().absolute()
+    output=Path(output).expand().absolute()
         
     if palette:
         palette = palette.lower()
@@ -73,15 +77,14 @@ def export_image(input, output, timeout=20, palette='white', resolution=150, lay
     else:
         fout = output
 
-    export_eagle(input=input, output=fout, output_type='image',
-                 timeout=timeout, commands=cmds, showgui=showgui,
-                 resolution=resolution)
-    
+    commands = export_command(output=fout, output_type='image',
+                              commands=cmds, resolution=resolution)
+    command_eagle(input=input, timeout=timeout, commands=commands, showgui=showgui)
 
     if mirror:
         im = Image.open(fout)
         # save dpi info
-        info=im.info
+        info = im.info
         im = ImageOps.mirror(im)
         im.save(output, **info)
 
