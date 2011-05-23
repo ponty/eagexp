@@ -6,4 +6,5 @@ include TODO*
 include CHANGES*
 include README*
 include setup.py
+recursive-include eagexp *
 prune docs/_build

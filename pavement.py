@@ -98,6 +98,9 @@ if ALL_TASKS_LOADED:
     
     options.paved.dist.manifest.include.remove('distribute_setup.py')
     
+    # to include eagle3d directory
+    options.paved.dist.manifest.recursive_include.add('eagexp *')
+    
     @task
     @needs('sloccount', 'cog', 'html', 'pdf', 'sdist', 'nose')
     def alltest():
