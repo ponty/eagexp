@@ -11,7 +11,7 @@ class EagleError(Exception):
     '''eagexp error'''
 
 
-def command_eagle(input, timeout=60, commands=[], showgui=False, callback=None):
+def command_eagle(input, commands=[], timeout=60, showgui=False, callback=None):
     input=Path(input).expand().absolute()
     
     if not commands:

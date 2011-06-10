@@ -52,7 +52,8 @@ install_requires = [
     'entrypoint2',
     'pyvirtualdisplay',
     'PIL',
-    'unipath'
+    'unipath',
+    'path.py',
     ]
 # compatible with distutils of python 2.3+ or later
 setup(
