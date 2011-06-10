@@ -11,6 +11,7 @@ Features:
  - background processing (only if Xephyr_, Xvfb_ and pyvirtualdisplay_ are installed)
  - timeout
  - 3D image export using Eagle3D_ and povray_
+ - calculate airwires
  
 Known problems:
  - slow: eagle is opened and closed for each export
