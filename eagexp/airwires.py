@@ -25,7 +25,7 @@ if (board) {
 
 def airwires(board, showgui=0):
     'search for airwires in eagle board'
-    board = path(board).abspath()
+    board = path(board).expand().abspath()
     
     file_out = tempfile.NamedTemporaryFile(suffix='.txt', delete=0)
     file_out.close()

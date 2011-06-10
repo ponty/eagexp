@@ -184,3 +184,16 @@ Start the eagexp module directly with python:
 ..  os.chdir('..')
 ..  ]]]
 ..  [[[end]]]
+
+
+
+airwires
+----------
+
+.. runblock:: pycon
+    
+    >>> from eagexp.airwires import airwires
+    >>> print airwires('~/.eagle/projects/examples/singlesided/singlesided.brd')    
+    >>> print airwires('~/.eagle/projects/examples/tutorial/demo2.brd')
+    
+    
