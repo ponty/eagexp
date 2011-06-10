@@ -12,7 +12,8 @@ Contents:
     usage
     api
     dev
-
+    eagle3d.rst
+    
 Indices and tables
 ==================
 
