@@ -45,7 +45,10 @@ def parse_partlist(str):
     lines = str.strip().splitlines()
     lines = filter(len, lines)
     hind = header_index(lines)
-    
+    if hind is None:
+        log.debug('empty partlist found')
+        return ([], [])
+
     header_line = lines[hind]
     header = header_line.split('  ')
     header = filter(len, header)
