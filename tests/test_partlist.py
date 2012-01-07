@@ -1,15 +1,13 @@
 from eagexp.partlist import raw_partlist, structured_partlist
 from nose.tools import eq_
 from path import path
-from prettyprint.prettyprint import pp
-from unipath.path import Path
+from pprint import pprint
 from unittest import TestCase
-import tempfile
 
 
 def export(fin, **kwargs):
-    pp(raw_partlist(fin, **kwargs))
-    pp(structured_partlist(fin, **kwargs))
+    pprint(raw_partlist(fin, **kwargs), width=1)
+    pprint(structured_partlist(fin, **kwargs), width=1)
 
 def check_dir(d):
     sch_ls = path(d).expand().walkfiles('*.sch')
