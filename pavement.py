@@ -45,16 +45,8 @@ classifiers = [
     "Operating System :: POSIX :: Linux",
     ]
 
-install_requires = [
-    # -*- Install requires: -*-
-    'setuptools',
-    'easyprocess',
-    'entrypoint2',
-    'pyvirtualdisplay',
-    'PIL',
-    'unipath',
-    'path.py',
-    ]
+install_requires = open("requirements.txt").read().split('\n')
+
 # compatible with distutils of python 2.3+ or later
 setup(
     name=NAME,
@@ -98,6 +90,7 @@ if ALL_TASKS_LOADED:
                                      ]
     
     options.paved.dist.manifest.include.remove('distribute_setup.py')
+    options.paved.dist.manifest.include.add('requirements.txt')
     
     # to include eagle3d directory
     options.paved.dist.manifest.recursive_include.add('eagexp *')
