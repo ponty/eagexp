@@ -50,7 +50,7 @@ General
  * install the program::
 
     # as root
-    easy_install https://github.com/ponty/eagexp/zipball/master
+    easy_install eagexp
 
 
 Ubuntu
@@ -64,7 +64,7 @@ Ubuntu
     # optional for background processing
     sudo apt-get install xvfb xserver-xephyr
 
-    sudo easy_install https://github.com/ponty/eagexp/zipball/master
+    sudo easy_install eagexp
     
 Uninstall
 ----------
