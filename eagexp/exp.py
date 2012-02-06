@@ -1,13 +1,4 @@
-from eagexp import USE_DISPLAY
-from easyprocess import Proc
-from pyvirtualdisplay import Display
 import os
-import shutil
-import tempfile
-
-
-class EagleError(Exception):
-    '''eagexp error'''
 
 
 def export_command(output, output_type, timeout=60, commands=[], showgui=False, resolution=None):
