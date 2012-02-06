@@ -3,6 +3,5 @@ easyprocess
 entrypoint2
 pyvirtualdisplay
 PIL
-unipath
 path.py
 
