@@ -12,6 +12,7 @@ try:
     from paved.util import *
     from paved.docs import *
     from paved.pycheck import *
+    from paved.pkg import *
     from sphinxcontrib import paverutils
     ALL_TASKS_LOADED = True
 except ImportError, e:
@@ -86,7 +87,7 @@ if ALL_TASKS_LOADED:
                                      'nosetests.xml', 
                                      'sloccount.sc', 
                                      '*.pdf','*.tex', 
-                                     '*.png',
+#                                     '*.png',
                                      ]
     
     options.paved.dist.manifest.include.remove('distribute_setup.py')
@@ -96,7 +97,15 @@ if ALL_TASKS_LOADED:
     options.paved.dist.manifest.recursive_include.add('eagexp *')
     
     @task
-    @needs('sloccount', 'cog', 'html', 'pdf', 'sdist', 'nose')
+    @needs(
+           'clean',
+           'sloccount', 
+           'cog', 
+           'html', 
+           'pdf', 
+           'sdist', 
+           'nose',
+           )
     def alltest():
         'all tasks to check'
         pass
