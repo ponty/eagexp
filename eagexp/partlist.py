@@ -1,8 +1,9 @@
 from eagexp import __version__
 from eagexp.cmd import command_eagle
 from eagexp.exp import export_command
+from eagexp.util import norm_path
 from entrypoint2 import entrypoint
-from unipath.path import Path
+from path import path
 import logging
 import os
 import tempfile
@@ -22,8 +23,8 @@ def export_partlist_to_file(input, output, timeout=20, showgui=False):
     :param showgui: Bool, True -> do not hide eagle GUI
     :rtype: None    
     '''
-    input=Path(input).expand().absolute()
-    output=Path(output).expand().absolute()
+    input=norm_path(input)
+    output=norm_path(output)
 
     commands = export_command(output=output, output_type='partlist')
     command_eagle(input=input, timeout=timeout, commands=commands, showgui=showgui)

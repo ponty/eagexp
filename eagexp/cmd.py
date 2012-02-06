@@ -1,7 +1,8 @@
 from eagexp import USE_DISPLAY
+from eagexp.util import norm_path
 from easyprocess import Proc
+from path import path
 from pyvirtualdisplay import Display
-from unipath.path import Path
 import os
 import shutil
 import tempfile
@@ -12,7 +13,7 @@ class EagleError(Exception):
 
 
 def command_eagle(input, commands=[], timeout=60, showgui=False, callback=None):
-    input=Path(input).expand().absolute()
+    input=norm_path(input)
     
     if not commands:
         commands = []
@@ -51,7 +52,8 @@ def command_eagle(input, commands=[], timeout=60, showgui=False, callback=None):
         if p.return_code != 0:
             raise EagleError('eagle return code is not zero, proc=' + str(p))
 
-    curdir=Path.cwd().expand().absolute()
+    curdir=path.getcwd()
+    curdir=norm_path(curdir)
     
     os.chdir(tmp_dir)
 

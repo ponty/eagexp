@@ -1,8 +1,9 @@
 from eagexp import __version__
-from eagexp.cmd import command_eagle
+from eagexp.cmd import command_eagle, EagleError
+from eagexp.util import norm_path
 from easyprocess import Proc
 from entrypoint2 import entrypoint
-from unipath.path import Path
+from path import path
 import Image
 import logging
 import os
@@ -29,16 +30,16 @@ def export_image3d(input, output, size=(800,600), pcb_rotate=(0,0,0), timeout=20
     :param size: tuple(width, size), image size
     :rtype: None
     '''
-    input=Path(input).expand().absolute()
-    output=Path(output).expand().absolute()
+    input=norm_path(input)
+    output=norm_path(output)
     
     ext = os.path.splitext(input)[1]
     if ext not in ['.brd']:
-        raise ValueError('Input extension is not ".brd", input=' + str(input))
+        raise ValueError('Input extension is not ".brd", brd=' + str(input))
         
     commands = []
-
-    ulp = Path(__file__).parent.child('eagle3d').child('3d50.ulp').absolute()
+    eagle3d = path(__file__).dirname() / 'eagle3d'
+    ulp = (eagle3d / '3d50.ulp').abspath()
     
     commands += ['RUN ' + ulp]
     commands += ['QUIT']
@@ -51,14 +52,14 @@ def export_image3d(input, output, size=(800,600), pcb_rotate=(0,0,0), timeout=20
         # http://library.thinkquest.org/3285/language/cmdln.html
         
         templ='#local pcb_rotate_%s = %s'
-        pov=Path(f.replace('.brd','.pov'))
+        pov=path(f.replace('.brd','.pov'))
         if pcb_rotate!=(0,0,0):
-            s=pov.read_file()
+            s=pov.text()
             s=s.replace(templ % ('x',0), templ % ('x',pcb_rotate[0]))
             s=s.replace(templ % ('y',0), templ % ('y',pcb_rotate[1]))
             s=s.replace(templ % ('z',0), templ % ('z',pcb_rotate[2]))
-            pov.write_file(s)
-        fpng = f.replace('.brd','.png')
+            pov.write_text(s)
+        fpng = path(f.replace('.brd','.png'))
         cmd=[]
         cmd+=["povray"]
         cmd+=["-d"] # no display
@@ -66,9 +67,12 @@ def export_image3d(input, output, size=(800,600), pcb_rotate=(0,0,0), timeout=20
         cmd+=['+W' + str(size[0])] # width
         cmd+=['+H' + str(size[1])] # height
         cmd+=['-o' + fpng]
+        cmd+=['-L' + eagle3d]
         cmd+=[pov]
-        Proc(cmd).call()
-        Path(fpng).copy(output)
+        p=Proc(cmd).call()
+        if not fpng.exists():
+            raise EagleError('povray error, proc=' + str(p))
+        fpng.copy(output)
         
     command_eagle(input=input, timeout=timeout, commands=commands, showgui=showgui, callback=render)
     
