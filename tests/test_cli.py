@@ -51,7 +51,7 @@ class Test(TestCase):
         
         # test resolution
         export('--resolution 50 %s %s' % (i,o))
-        export('--resolution 500 %s %s' % (i,o))
+#        export('--resolution 500 %s %s' % (i,o))
         export('--resolution x200 %s %s' % (i,o), fail=1)
         
         # test showgui

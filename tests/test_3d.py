@@ -1,7 +1,5 @@
-from eagexp.image import export_image
 from eagexp.image3d import export_image3d
 from path import path
-from unipath.path import Path
 from unittest import TestCase
 import tempfile
 
@@ -9,7 +7,7 @@ VISIBLE=0
 
 def export(fin, **kwargs):
     fout = tempfile.NamedTemporaryFile(prefix='eagexp_test_', suffix='.png', delete=0)
-    fout=Path(fout.name)
+    fout=path(fout.name)
     export_image3d(fin, fout, showgui=VISIBLE, **kwargs)
     assert fout.exists() 
     #path(fout.name).remove()
