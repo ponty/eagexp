@@ -1,4 +1,3 @@
-setuptools
 easyprocess
 entrypoint2
 pyvirtualdisplay
