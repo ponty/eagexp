@@ -9,6 +9,7 @@ def export(fin, **kwargs):
     pprint(raw_partlist(fin, **kwargs), width=1)
     pprint(structured_partlist(fin, **kwargs), width=1)
 
+
 def check_dir(d):
     sch_ls = path(d).expand().walkfiles('*.sch')
     brd_ls = path(d).expand().walkfiles('*.brd')
@@ -18,13 +19,12 @@ def check_dir(d):
 
     for x in all:
         export(x)
-    
-class Test(TestCase):       
+
+
+class Test(TestCase):
     def test_examples(self):
         check_dir('~/.eagle/projects/examples/')
-    
+
     def test_data(self):
         data = path(__file__).parent / 'data'
         check_dir(data)
-        
-        

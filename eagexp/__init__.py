@@ -10,8 +10,8 @@ try:
 
 except:
     import warnings
-    warnings.warn('pyvirtualdisplay was not found, no background GUI work is possible')
-
+    warnings.warn(
+        'pyvirtualdisplay was not found, no background GUI work is possible')
 
 
 __version__ = '0.0.4'
