@@ -14,7 +14,7 @@ except:
         'pyvirtualdisplay was not found, no background GUI work is possible')
 
 
-__version__ = '0.0.4'
+__version__ = '0.1.0'
 
 log = logging.getLogger(__name__)
 log.debug('version=' + __version__)
