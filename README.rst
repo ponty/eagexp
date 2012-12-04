@@ -46,6 +46,7 @@ General
  * install eagle_
  * install povray_ (optional for 3D)
  * install pip_
+ * install PIL_
  * install pyvirtualdisplay_ , xvfb_ , xephyr_ (optional for background processing)
  * install the program::
 
@@ -60,6 +61,7 @@ Ubuntu
     sudo apt-get install eagle
     sudo apt-get install povray
     sudo apt-get install python-pip
+    sudo apt-get install python-imaging
 
     # optional for background processing
     sudo apt-get install xvfb xserver-xephyr
@@ -83,3 +85,4 @@ Uninstall
 .. _povray: http://www.povray.org/
 .. _povray: http://www.povray.org/
 .. _Eagle3D: http://www.matwei.de/doku.php?id=en:eagle3d:eagle3d
+.. _PIL: http://www.pythonware.com/library/pil/

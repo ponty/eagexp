@@ -4,7 +4,7 @@ from eagexp.util import norm_path
 from easyprocess import Proc
 from entrypoint2 import entrypoint
 from path import path
-import Image
+from PIL import Image
 import logging
 import os
 import tempfile
