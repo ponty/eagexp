@@ -6,13 +6,16 @@ from pyvirtualdisplay import Display
 import os
 import shutil
 import tempfile
+import time
+
+TIMEOUT = 300
 
 
 class EagleError(Exception):
     '''eagexp error'''
 
 
-def command_eagle(input, commands=[], timeout=60, showgui=False, callback=None):
+def command_eagle(input, commands=[], timeout=TIMEOUT, showgui=False, callback=None):
     input = norm_path(input)
 
     if not commands:
@@ -57,8 +60,9 @@ def command_eagle(input, commands=[], timeout=60, showgui=False, callback=None):
     os.chdir(tmp_dir)
 
     if USE_DISPLAY:
-        f = Display(visible=showgui, size=(800, 600)).wrap(call_eagle)
-        f()
+        with Display(visible=showgui, size=(800, 600)):
+            time.sleep(1)
+            call_eagle()
     else:
         call_eagle()
 
