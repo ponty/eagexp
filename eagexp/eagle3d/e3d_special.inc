@@ -3245,7 +3245,7 @@ union{
         text {ttf global_fontfile_arial_bold value 0.05, 0 pigment{col} scale 2 rotate<90,0,0> translate<-6+offsetX,H+0.05,-3.5>}  // Marking
         text {ttf global_fontfile_arial_bold "0341" 0.05, 0 pigment{col} scale 2 rotate<90,0,0> translate<-3+offsetX,H+0.05,-6>}  // Marking
         text {ttf global_fontfile_arial "R" 0.05, 0 pigment{col} scale 1 rotate<90,0,0> translate<+9.1-2.5,H+0.05,6.9-2>}  // Marking     
-        disc {<9.45-2.5, H+0.05, 7.28-2> y,0.7,0.6.5 pigment{col}}
+        disc {<9.45-2.5, H+0.05, 7.28-2> y,0.7,0.65 pigment{col}}
     #end
     #if(Lb=3)  // 5W 
         #local col=Black;
