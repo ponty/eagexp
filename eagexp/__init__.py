@@ -1,7 +1,5 @@
-'''
-https://github.com/ponty/eagexp
-'''
 import logging
+from eagexp.about import __version__
 
 USE_DISPLAY = 0
 try:
@@ -14,7 +12,6 @@ except:
         'pyvirtualdisplay was not found, no background GUI work is possible')
 
 
-__version__ = '0.1.0'
-
 log = logging.getLogger(__name__)
-log.debug('version=' + __version__)
+log.debug('version=%s', __version__)
+
