@@ -1,7 +1,7 @@
 from eagexp import partlist
 
-sch = '~/.eagle/projects/examples/singlesided/singlesided.sch'
-brd = '~/.eagle/projects/examples/singlesided/singlesided.brd'
+sch = '/usr/share/eagle/projects/examples/singlesided/singlesided.sch'
+brd = '/usr/share/eagle/projects/examples/singlesided/singlesided.brd'
 
 print 'raw_partlist of ' + sch
 print "'''"

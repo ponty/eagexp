@@ -3,7 +3,7 @@ Example for 3D image export
 '''
 from eagexp import image3d
 
-brd = '~/.eagle/projects/examples/tutorial/demo2.brd'
+brd = '/usr/share/eagle/projects/examples/tutorial/demo2.brd'
 
 image3d.export_image3d(brd, 'api_3d.png')
 

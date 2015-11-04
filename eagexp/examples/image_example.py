@@ -4,7 +4,7 @@ Example for image export with various options
 
 from eagexp import image
 
-brd = '~/.eagle/projects/examples/tutorial/demo2.brd'
+brd = '/usr/share/eagle/projects/examples/tutorial/demo2.brd'
 
 # set resolution in DPI
 image.export_image(brd, 'api_brd_50.png', resolution=50)
