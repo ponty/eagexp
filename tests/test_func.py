@@ -5,6 +5,7 @@ from unittest import TestCase
 import tempfile
 
 VISIBLE = 0
+EXAMPLES = Path('/usr/share/eagle/projects/examples')
 
 
 def export(fin, **kwargs):
@@ -18,10 +19,8 @@ def export(fin, **kwargs):
 
 class Test(TestCase):
     def test_all(self):
-        sch_ls = Path(
-            '~/.eagle/projects/examples/').expand().walkfiles('*.sch')
-        brd_ls = Path(
-            '~/.eagle/projects/examples/').expand().walkfiles('*.brd')
+        sch_ls = EXAMPLES.walkfiles('*.sch')
+        brd_ls = EXAMPLES.walkfiles('*.brd')
         sch_ls = list(sch_ls)
         brd_ls = list(brd_ls)
         all = sch_ls + brd_ls
@@ -30,10 +29,8 @@ class Test(TestCase):
             export(x)
 
     def test_options(self):
-        sch_ls = Path(
-            '~/.eagle/projects/examples/').expand().walkfiles('*.sch')
-        brd_ls = Path(
-            '~/.eagle/projects/examples/').expand().walkfiles('*.brd')
+        sch_ls = EXAMPLES.walkfiles('*.sch')
+        brd_ls = EXAMPLES.walkfiles('*.brd')
         sch_ls = list(sch_ls)
         brd_ls = list(brd_ls)
         all = sch_ls + brd_ls

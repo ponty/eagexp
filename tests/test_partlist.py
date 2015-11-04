@@ -4,6 +4,7 @@ from path import Path
 from pprint import pprint
 from unittest import TestCase
 
+EXAMPLES = Path('/usr/share/eagle/projects/examples')
 
 def export(fin, **kwargs):
     pprint(raw_partlist(fin, **kwargs), width=1)
@@ -23,7 +24,7 @@ def check_dir(d):
 
 class Test(TestCase):
     def test_examples(self):
-        check_dir('~/.eagle/projects/examples/')
+        check_dir(EXAMPLES)
 
     def test_data(self):
         data = Path(__file__).parent / 'data'

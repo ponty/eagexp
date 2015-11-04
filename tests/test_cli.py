@@ -5,6 +5,7 @@ from pyvirtualdisplay.display import Display
 from unittest import TestCase
 import tempfile
 
+EXAMPLES = Path('/usr/share/eagle/projects/examples')
 
 def export(params, fail=0):
     # mod=path(__file__).parent.parent / 'eagexp.py'
@@ -23,10 +24,8 @@ class Test(TestCase):
         fout = tempfile.NamedTemporaryFile(suffix='.png', delete=0)
         o = fout.name
 
-        sch_ls = Path(
-            '~/.eagle/projects/examples/').expand().walkfiles('*.sch')
-        brd_ls = Path(
-            '~/.eagle/projects/examples/').expand().walkfiles('*.brd')
+        sch_ls = EXAMPLES.walkfiles('*.sch')
+        brd_ls = EXAMPLES.walkfiles('*.brd')
         sch_ls = list(sch_ls)
         brd_ls = list(brd_ls)
         all = sch_ls + brd_ls
