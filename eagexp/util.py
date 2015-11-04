@@ -1,6 +1,6 @@
-from path import path
+from path import Path
 
 
 def norm_path(s):
-    s = path(s).expand().abspath()
+    s = Path(s).expand().abspath()
     return s

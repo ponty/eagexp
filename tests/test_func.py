@@ -1,6 +1,6 @@
 from eagexp.image import export_image
 from nose.tools import eq_
-from path import path
+from path import Path
 from unittest import TestCase
 import tempfile
 
@@ -10,7 +10,7 @@ VISIBLE = 0
 def export(fin, **kwargs):
     fout = tempfile.NamedTemporaryFile(
         prefix='eagexp_test_', suffix='.png', delete=0)
-    fout = path(fout.name)
+    fout = Path(fout.name)
     export_image(fin, fout, showgui=VISIBLE, **kwargs)
     assert fout.exists()
     # path(fout.name).remove()
@@ -18,9 +18,9 @@ def export(fin, **kwargs):
 
 class Test(TestCase):
     def test_all(self):
-        sch_ls = path(
+        sch_ls = Path(
             '~/.eagle/projects/examples/').expand().walkfiles('*.sch')
-        brd_ls = path(
+        brd_ls = Path(
             '~/.eagle/projects/examples/').expand().walkfiles('*.brd')
         sch_ls = list(sch_ls)
         brd_ls = list(brd_ls)
@@ -30,9 +30,9 @@ class Test(TestCase):
             export(x)
 
     def test_options(self):
-        sch_ls = path(
+        sch_ls = Path(
             '~/.eagle/projects/examples/').expand().walkfiles('*.sch')
-        brd_ls = path(
+        brd_ls = Path(
             '~/.eagle/projects/examples/').expand().walkfiles('*.brd')
         sch_ls = list(sch_ls)
         brd_ls = list(brd_ls)

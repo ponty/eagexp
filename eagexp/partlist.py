@@ -3,7 +3,6 @@ from eagexp.cmd import command_eagle
 from eagexp.exp import export_command
 from eagexp.util import norm_path
 from entrypoint2 import entrypoint
-from path import path
 import logging
 import os
 import tempfile

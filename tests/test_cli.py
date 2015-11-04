@@ -1,6 +1,6 @@
 from easyprocess import Proc
 from nose.tools import eq_
-from path import path
+from path import Path
 from pyvirtualdisplay.display import Display
 from unittest import TestCase
 import tempfile
@@ -23,9 +23,9 @@ class Test(TestCase):
         fout = tempfile.NamedTemporaryFile(suffix='.png', delete=0)
         o = fout.name
 
-        sch_ls = path(
+        sch_ls = Path(
             '~/.eagle/projects/examples/').expand().walkfiles('*.sch')
-        brd_ls = path(
+        brd_ls = Path(
             '~/.eagle/projects/examples/').expand().walkfiles('*.brd')
         sch_ls = list(sch_ls)
         brd_ls = list(brd_ls)

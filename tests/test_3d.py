@@ -1,5 +1,5 @@
 from eagexp.image3d import export_image3d
-from path import path
+from path import Path
 from unittest import TestCase
 import tempfile
 
@@ -9,7 +9,7 @@ VISIBLE = 0
 def export(fin, **kwargs):
     fout = tempfile.NamedTemporaryFile(
         prefix='eagexp_test_', suffix='.png', delete=0)
-    fout = path(fout.name)
+    fout = Path(fout.name)
     export_image3d(fin, fout, showgui=VISIBLE, **kwargs)
     assert fout.exists()
     # path(fout.name).remove()
@@ -17,7 +17,7 @@ def export(fin, **kwargs):
 
 class Test(TestCase):
     def test_all(self):
-        brd_ls = path(
+        brd_ls = Path(
             '~/.eagle/projects/examples/').expand().walkfiles('*.brd')
         brd_ls = list(brd_ls)
 
@@ -25,7 +25,7 @@ class Test(TestCase):
             export(x)
 
     def test_options(self):
-        brd_ls = path(
+        brd_ls = Path(
             '~/.eagle/projects/examples/').expand().walkfiles('*.brd')
         brd_ls = list(brd_ls)
 

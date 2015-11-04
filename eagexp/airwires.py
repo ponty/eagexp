@@ -1,5 +1,5 @@
 from eagexp.cmd import command_eagle
-from path import path
+from path import Path
 import tempfile
 
 
@@ -26,7 +26,7 @@ if (board) {
 
 def airwires(board, showgui=0):
     'search for airwires in eagle board'
-    board = path(board).expand().abspath()
+    board = Path(board).expand().abspath()
 
     file_out = tempfile.NamedTemporaryFile(suffix='.txt', delete=0)
     file_out.close()
@@ -43,9 +43,9 @@ def airwires(board, showgui=0):
     ]
     command_eagle(board, commands=commands, showgui=showgui)
 
-    n = int(path(file_out.name).text())
+    n = int(Path(file_out.name).text())
 
-    path(file_out.name).remove()
-    path(file_ulp.name).remove()
+    Path(file_out.name).remove()
+    Path(file_ulp.name).remove()
 
     return n

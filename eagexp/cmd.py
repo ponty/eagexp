@@ -1,7 +1,7 @@
 from eagexp import USE_DISPLAY
 from eagexp.util import norm_path
 from easyprocess import Proc
-from path import path
+from path import Path
 from pyvirtualdisplay import Display
 import os
 import shutil
@@ -54,7 +54,7 @@ def command_eagle(input, commands=[], timeout=TIMEOUT, showgui=False, callback=N
         if p.return_code != 0:
             raise EagleError('eagle return code is not zero, proc=' + str(p))
 
-    curdir = path.getcwd()
+    curdir = Path.getcwd()
     curdir = norm_path(curdir)
 
     os.chdir(tmp_dir)

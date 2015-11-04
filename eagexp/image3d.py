@@ -3,7 +3,7 @@ from eagexp.cmd import command_eagle, EagleError
 from eagexp.util import norm_path
 from easyprocess import Proc
 from entrypoint2 import entrypoint
-from path import path
+from path import Path
 from PIL import Image
 import logging
 import os
@@ -37,7 +37,7 @@ def export_image3d(input, output, size=(800, 600), pcb_rotate=(0, 0, 0), timeout
         raise ValueError('Input extension is not ".brd", brd=' + str(input))
 
     commands = []
-    eagle3d = path(__file__).dirname() / 'eagle3d'
+    eagle3d = Path(__file__).dirname() / 'eagle3d'
     ulp = (eagle3d / '3d50.ulp').abspath()
 
     commands += ['RUN ' + ulp]
@@ -51,14 +51,14 @@ def export_image3d(input, output, size=(800, 600), pcb_rotate=(0, 0, 0), timeout
         # http://library.thinkquest.org/3285/language/cmdln.html
 
         templ = '#local pcb_rotate_%s = %s'
-        pov = path(f.replace('.brd', '.pov'))
+        pov = Path(f.replace('.brd', '.pov'))
         if pcb_rotate != (0, 0, 0):
             s = pov.text()
             s = s.replace(templ % ('x', 0), templ % ('x', pcb_rotate[0]))
             s = s.replace(templ % ('y', 0), templ % ('y', pcb_rotate[1]))
             s = s.replace(templ % ('z', 0), templ % ('z', pcb_rotate[2]))
             pov.write_text(s)
-        fpng = path(f.replace('.brd', '.png'))
+        fpng = Path(f.replace('.brd', '.png'))
         cmd = []
         cmd += ["povray"]
         cmd += ["-d"]  # no display
