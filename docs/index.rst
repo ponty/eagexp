@@ -1,23 +1,17 @@
-**eagexp**
+======
+eagexp
+======
 
-:Date: |today|
-:PDF: `eagexp.pdf <eagexp.pdf>`_
 
-Contents:
 
-.. toctree::
-    :maxdepth: 2
+About
+=====
 
-    readme
-    usage
-    api
-    dev
-    eagle3d.rst
+
+.. include:: ../README.rst
+
+.. include:: hierarchy.rst
+
+.. include:: api.rst
+
     
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-

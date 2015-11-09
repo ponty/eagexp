@@ -21,7 +21,7 @@ Known problems:
  - 3D image export has a lot of options which are not supported
    
 Basic usage
-============
+===========
 
     >>> from eagexp import image, partlist
     >>> brd='~/.eagle/projects/examples/singlesided/singlesided.brd'
@@ -30,7 +30,7 @@ Basic usage
 
 
 How it works
-========================
+============
 
 #. start Xvfb_ headless X server using pyvirtualdisplay_
 #. redirect eagle display to Xvfb server by setting $DISPLAY variable.
@@ -41,7 +41,7 @@ Installation
 ============
 
 General
---------
+-------
 
  * install eagle_
  * install povray_ (optional for 3D)
@@ -54,35 +54,25 @@ General
     pip install eagexp
 
 
-Ubuntu
-----------
+Ubuntu 14.04
+------------
 ::
 
-    sudo apt-get install eagle
-    sudo apt-get install povray
-    sudo apt-get install python-pip
-    sudo apt-get install python-imaging
-
-    # optional for background processing
-    sudo apt-get install xvfb xserver-xephyr
-
+    sudo apt-get install python-pip eagle povray  python-pil xvfb xdotool
     sudo pip install eagexp
     
 Uninstall
-----------
+---------
 ::
 
     # as root
     pip uninstall eagexp
 
 
-.. _setuptools: http://peak.telecommunity.com/DevCenter/EasyInstall
-.. _pip: http://pip.openplans.org/
+.. _pip: https://pypi.python.org/pypi/pip
 .. _Xvfb: http://en.wikipedia.org/wiki/Xvfb
-.. _Xephyr: http://en.wikipedia.org/wiki/Xephyr
 .. _pyvirtualdisplay: https://github.com/ponty/PyVirtualDisplay
 .. _eagle: http://www.cadsoftusa.com/
-.. _povray: http://www.povray.org/
 .. _povray: http://www.povray.org/
 .. _Eagle3D: http://www.matwei.de/doku.php?id=en:eagle3d:eagle3d
 .. _PIL: http://www.pythonware.com/library/pil/
