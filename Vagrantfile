@@ -84,7 +84,7 @@ Vagrant.configure(2) do |config|
   sudo apt-get install -y libjpeg-dev zlib1g-dev
 
 # project dependencies
-  sudo apt-get install -y scrot eagle povray  python-pil
+  sudo apt-get install -y scrot eagle povray  python-pil xdotool
 
 # test dependencies
   sudo pip install -r /vagrant/requirements-test.txt
