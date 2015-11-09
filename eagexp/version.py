@@ -1,12 +1,32 @@
-from easyprocess import Proc, extract_version
+from easyprocess import Proc
 from entrypoint2 import entrypoint
+from pyvirtualdisplay.display import Display
 
 
-@entrypoint
-def export_version():
+def extract_version(txt):
+    '''This function tries to extract the version from the help text
     '''
-    return eagle version
+    words = txt.replace(',', ' ').split()
+    version = None
+    for x in reversed(words):
+        if len(x) > 2:
+            if x[0].lower() == 'v':
+                x = x[1:]
+            if '.' in x and x[0].isdigit():
+                version = x
+                break
+    return version
+
+def version():
+    '''
+    return eagle version. 
+    It does not work without X!
 
     :rtype: string
     '''
     return extract_version(Proc('eagle -?').call().stdout)
+
+@entrypoint
+def print_version():
+    with Display(visible=False):
+        print (version())
