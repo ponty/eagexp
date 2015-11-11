@@ -20,7 +20,6 @@ install:
 script:  
  - xauth add :0 . `mcookie`
  - cd tests 
- - TESTS="easy test_scrot.py test_imagemagick.py"
  - nosetests -v --with-coverage --cover-package=eagexp
   
 after_success:
