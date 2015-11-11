@@ -1,20 +1,39 @@
 from eagexp import USE_DISPLAY
 from eagexp.util import norm_path
-from easyprocess import Proc
+from eagexp.version import version
+from easyprocess import Proc, EasyProcess
+import os
 from path import Path
 from pyvirtualdisplay import Display
-import os
 import shutil
 import tempfile
 import time
+# import pyscreenshot
 
-TIMEOUT = 300
+
+TIMEOUT = 60
 
 
 class EagleError(Exception):
     '''eagexp error'''
+    
+def accept_freeware_license():
+    '''different Eagle versions need differnt TAB count.
+    6.5  -> 2
+    6.6  -> 3
+    7.4  -> 2
+    '''
+    ntab = 3 if version().startswith('6.6.') else 2
+    for _ in range(ntab):
+        EasyProcess('xdotool key KP_Tab').call()
+        time.sleep(0.5)
+    EasyProcess('xdotool key KP_Space').call()
 
-
+    time.sleep(0.5)
+    
+    # say OK to any more question
+    EasyProcess('xdotool key KP_Space').call()
+    
 def command_eagle(input, commands=[], timeout=TIMEOUT, showgui=False, callback=None):
     input = norm_path(input)
 
@@ -50,9 +69,24 @@ def command_eagle(input, commands=[], timeout=TIMEOUT, showgui=False, callback=N
     cmd = ['eagle', '-C ' + script, tmp_input]
 
     def call_eagle():
-        p = Proc(cmd).call(timeout=timeout)
-        if p.return_code != 0:
-            raise EagleError('eagle return code is not zero, proc=' + str(p))
+        t = 0
+        accept_tries = 0
+        with EasyProcess(cmd) as p:
+            while p.is_alive():
+                time.sleep(0.5)
+                t += 0.5
+                if t > timeout / 2:
+                    if accept_tries == 0:
+                        accept_freeware_license()
+                        accept_tries += 1
+                if t > timeout:
+#                     pyscreenshot.grab_to_file('/vagrant/xxx.png')
+                    raise EagleError('eagle return code is not zero, proc=' + str(p))
+#                     break
+                    
+#         p = Proc(cmd).call(timeout=timeout)
+#         if p.return_code != 0:
+#             raise EagleError('eagle return code is not zero, proc=' + str(p))
 
     curdir = Path.getcwd()
     curdir = norm_path(curdir)
