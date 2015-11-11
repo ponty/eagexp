@@ -5,7 +5,9 @@ from eagexp.util import norm_path
 from entrypoint2 import entrypoint
 import logging
 import os
+from path import Path
 import tempfile
+
 
 log = logging.getLogger(__name__)
 log.debug('version=' + __version__)
@@ -80,7 +82,7 @@ def raw_partlist(input, timeout=20, showgui=False):
         prefix='eagexp_', suffix='.partlist', delete=0).name
     export_partlist_to_file(
         input=input, output=output, timeout=timeout, showgui=showgui)
-    s = open(output).read()
+    s = Path(output).text(encoding='latin1')
     os.remove(output)
     return s
 

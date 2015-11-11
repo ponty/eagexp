@@ -34,7 +34,7 @@ def airwires(board, showgui=0):
     ulp = ulp_templ.replace('FILE_NAME', file_out.name)
 
     file_ulp = tempfile.NamedTemporaryFile(suffix='.ulp', delete=0)
-    file_ulp.write(ulp)
+    file_ulp.write(ulp.encode('utf-8'))
     file_ulp.close()
 
     commands = [
