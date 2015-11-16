@@ -60,7 +60,7 @@ Ubuntu 14.04
 ------------
 ::
 
-    sudo apt-get install python-pip eagle povray  python-pil xvfb xdotool
+    sudo apt-get install python-pip eagle povray  python-pil xvfb xserver-xephyr xdotool
     sudo pip install eagexp
     
 Uninstall
