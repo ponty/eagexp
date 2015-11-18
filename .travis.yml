@@ -11,18 +11,18 @@ install:
  - sudo apt-get install python-dev xvfb
  - sudo apt-get install scrot libjpeg-dev zlib1g-dev xdotool eagle xserver-xephyr
  - sudo apt-get install libboost-thread-dev zlib1g-dev libpng12-dev libjpeg-turbo8-dev libtiff4-dev libopenexr-dev libsdl-gfx1.2-dev
+ - pip install -r requirements-test.txt
+ - pip install .
+ - pip install coveralls
  - wget https://github.com/POV-Ray/povray/archive/3.7-stable.zip
- - unzip 3.7-stable.zip
+ - unzip -qq 3.7-stable.zip
  - cd povray*
  - cd unix/
  - ./prebuild.sh
  - cd ../
  - ./configure COMPILED_BY="your name <email@address>" 
- - make
+ - make --quiet
  - sudo make install
- - pip install -r requirements-test.txt
- - pip install .
- - pip install coveralls
 
 script:  
  - xauth add :0 . `mcookie`
