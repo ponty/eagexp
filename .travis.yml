@@ -23,6 +23,7 @@ install:
  - ./configure COMPILED_BY="your name <email@address>" 
  - make --quiet
  - sudo make install
+ - cd ../
 
 script:  
  - xauth add :0 . `mcookie`
