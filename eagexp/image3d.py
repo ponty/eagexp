@@ -70,7 +70,7 @@ def export_image3d(input, output, size=(800, 600), pcb_rotate=(0, 0, 0), timeout
         cmd += [pov]
         p = Proc(cmd).call()
         if not fpng.exists():
-            raise EagleError('povray error, proc=' + str(p))
+            raise EagleError('povray error, proc=%s' % p)
         fpng.copy(output)
 
     command_eagle(input=input, timeout=timeout, commands=commands,
