@@ -12,7 +12,7 @@ python:
 install:
  - sudo apt-get update -qq 
  - sudo apt-get install python-dev xvfb
- - sudo apt-get install scrot libjpeg-dev zlib1g-dev xdotool eagle xserver-xephyr
+ - sudo apt-get install scrot libjpeg-dev zlib1g-dev xdotool eagle:i386 xserver-xephyr
  - sudo apt-get install libboost-thread-dev zlib1g-dev libpng12-dev libjpeg-turbo8-dev libtiff4-dev libopenexr-dev libsdl-gfx1.2-dev
  - pip install -r requirements-test.txt
  - pip install .
