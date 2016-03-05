@@ -1,9 +1,5 @@
-# from path import path
-# import logging
-# import sphinx
-import sys
-# from setuptools import find_packages
 import os
+import sys
 
 project = 'eagexp'
 author = 'ponty'
@@ -14,6 +10,7 @@ exec(open(os.path.join('..', project, 'about.py')).read())
 release = __version__
 
 # logging.basicConfig(level=logging.DEBUG)
+sys.path.insert(0, os.path.abspath('..'))
 
 # Extension
 extensions = [
@@ -24,9 +21,9 @@ extensions = [
     #'sphinx.ext.graphviz',
 #     'sphinxcontrib.autorun',
     #'sphinx.ext.autosummary',
-    #'sphinx.ext.intersphinx',
+#     'sphinx.ext.intersphinx',
 ]
-intersphinx_mapping = {'http://docs.python.org/': None}
+# intersphinx_mapping = {'http://docs.python.org/': None}
 
 # Source
 master_doc = 'index'

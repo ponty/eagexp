@@ -1,4 +1,4 @@
-from setuptools import find_packages, setup
+from setuptools import setup
 import os.path
 import sys
 
@@ -61,7 +61,7 @@ setup(
     # author_email='',
     url=URL,
     license='BSD',
-    packages=find_packages(exclude=['bootstrap', 'pavement', ]),
+    packages=PACKAGES,
     include_package_data=True,
 #     test_suite='nose.collector',
     zip_safe=False,

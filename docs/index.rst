@@ -10,8 +10,7 @@ About
 
 .. include:: ../README.rst
 
-.. include:: hierarchy.rst
+.. include:: usage.rst
 
 .. include:: api.rst
-
     
