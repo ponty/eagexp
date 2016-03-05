@@ -508,6 +508,8 @@ Command-line help
     --version             show program's version number and exit
   #-#
 
+..  #-- sh('mv *.png _img')--#
+..  #-#
 
 
 .. _pip: https://pypi.python.org/pypi/pip
@@ -535,6 +537,4 @@ Command-line help
 .. |Documentation| image:: https://readthedocs.org/projects/eagexp/badge/?version=latest
    :target: http://eagexp.readthedocs.org
 
-  #-- sh('mv *.png _img')--#
-  #-#
    
