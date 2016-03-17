@@ -154,7 +154,7 @@ Example for 3D::
           brd, 'api_3d_yrot3.png', pcb_rotate=(0, 135, 0), size=(200, 150))
   #-#
 
-Start the example program:
+Start the example program::
 
     python -m eagexp.examples.image3d_example
 
