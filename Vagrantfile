@@ -69,8 +69,8 @@ Vagrant.configure(2) do |config|
   echo 'export distutils_issue8876_workaround_enabled=1' >> /home/vagrant/.profile
   
 # enable multiverse and backports
-  echo 'deb http://archive.ubuntu.com/ubuntu trusty multiverse' >> /etc/apt/sources.list
-  echo 'deb http://archive.ubuntu.com/ubuntu trusty-backports main restricted universe multiverse' >> /etc/apt/sources.list
+#  echo 'deb http://archive.ubuntu.com/ubuntu trusty multiverse' >> /etc/apt/sources.list
+#  echo 'deb http://archive.ubuntu.com/ubuntu trusty-backports main restricted universe multiverse' >> /etc/apt/sources.list
   
 # install python versions
   sudo add-apt-repository --yes  ppa:fkrull/deadsnakes
