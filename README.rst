@@ -5,7 +5,7 @@ Links:
  * documentation: http://eagexp.readthedocs.org
  * PYPI: https://pypi.python.org/pypi/eagexp
 
-|Travis| |Coveralls| |Latest Version| |Supported Python versions| |License| |Downloads| |Code Health| |Documentation|
+|Travis| |Coveralls| |Latest Version| |Supported Python versions| |License| |Code Health| |Documentation|
 
 Features:
  - written in python
@@ -529,8 +529,6 @@ Command-line help
 .. |Supported Python versions| image:: https://img.shields.io/pypi/pyversions/eagexp.svg
    :target: https://pypi.python.org/pypi/eagexp/
 .. |License| image:: https://img.shields.io/pypi/l/eagexp.svg
-   :target: https://pypi.python.org/pypi/eagexp/
-.. |Downloads| image:: https://img.shields.io/pypi/dm/eagexp.svg
    :target: https://pypi.python.org/pypi/eagexp/
 .. |Code Health| image:: https://landscape.io/github/ponty/eagexp/master/landscape.svg?style=flat
    :target: https://landscape.io/github/ponty/eagexp/master
