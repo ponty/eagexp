@@ -520,7 +520,7 @@ Command-line help
 .. _PIL: http://www.pythonware.com/library/pil/
 
 
-.. |Travis| image:: http://img.shields.io/travis/ponty/eagexp.svg
+.. |Travis| image:: https://travis-ci.org/ponty/eagexp.svg?branch=master
    :target: https://travis-ci.org/ponty/eagexp/
 .. |Coveralls| image:: http://img.shields.io/coveralls/ponty/eagexp/master.svg
    :target: https://coveralls.io/r/ponty/eagexp/
