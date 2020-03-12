@@ -1,7 +1,6 @@
 from eagexp import USE_DISPLAY
 from eagexp.util import norm_path
-from eagexp.version import version
-from easyprocess import Proc, EasyProcess
+from easyprocess import EasyProcess
 import os
 from path import Path
 from pyvirtualdisplay import Display

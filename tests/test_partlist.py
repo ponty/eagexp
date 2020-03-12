@@ -1,5 +1,4 @@
 from eagexp.partlist import raw_partlist, structured_partlist
-from nose.tools import eq_
 from path import Path
 from pprint import pprint
 from unittest import TestCase

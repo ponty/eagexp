@@ -1,5 +1,4 @@
 from eagexp.image import export_image
-from nose.tools import eq_
 from path import Path
 from unittest import TestCase
 import tempfile
