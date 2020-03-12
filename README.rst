@@ -79,29 +79,28 @@ Export from python code
 Example::
 
   #-- include('examples/image_example.py')--#
-  '''
+  """
   Example for image export with various options
-  '''
+  """
 
   from eagexp import image
 
-  brd = '/usr/share/eagle/projects/examples/tutorial/demo2.brd'
+  brd = "/usr/share/eagle/projects/examples/tutorial/demo2.brd"
 
   if __name__ == "__main__":
       # set resolution in DPI
-      image.export_image(brd, 'api_brd_50.png', resolution=50)
-      image.export_image(brd, 'api_brd_100.png', resolution=100)
-      image.export_image(brd, 'api_brd_150.png', resolution=150)
-      
+      image.export_image(brd, "api_brd_50.png", resolution=50)
+      image.export_image(brd, "api_brd_100.png", resolution=100)
+      image.export_image(brd, "api_brd_150.png", resolution=150)
+
       # mirror image
-      image.export_image(brd, 'api_brd_mirror.png', mirror=True)
-      
+      image.export_image(brd, "api_brd_mirror.png", mirror=True)
+
       # display only 2 layers
-      image.export_image(brd, 'api_brd_layer.png', layers=['dimension', 'pads'])
-      
+      image.export_image(brd, "api_brd_layer.png", layers=["dimension", "pads"])
+
       # display layer using eagle command
-      image.export_image(
-          brd, 'api_brd_command.png', command='display none dimension')
+      image.export_image(brd, "api_brd_command.png", command="display none dimension")
   #-#
 
 Start the example program::
@@ -128,30 +127,34 @@ Result:
 Example for 3D::
 
   #-- include('examples/image3d_example.py')--#
-  '''
+  """
   Example for 3D image export
-  '''
+  """
   from eagexp import image3d
 
-  brd = '/usr/share/eagle/projects/examples/tutorial/demo2.brd'
+  brd = "/usr/share/eagle/projects/examples/tutorial/demo2.brd"
 
   if __name__ == "__main__":
-      image3d.export_image3d(brd, 'api_3d.png')
-      
+      image3d.export_image3d(brd, "api_3d.png")
+
       # size
-      image3d.export_image3d(brd, 'api_3d_size1.png', size=(50, 50))
-      image3d.export_image3d(brd, 'api_3d_size2.png', size=(50, 100))
-      image3d.export_image3d(brd, 'api_3d_size3.png', size=(100, 50))
-      
+      image3d.export_image3d(brd, "api_3d_size1.png", size=(50, 50))
+      image3d.export_image3d(brd, "api_3d_size2.png", size=(50, 100))
+      image3d.export_image3d(brd, "api_3d_size3.png", size=(100, 50))
+
       # rotate
       image3d.export_image3d(
-          brd, 'api_3d_xrot.png', pcb_rotate=(180, 0, 0), size=(200, 150))
+          brd, "api_3d_xrot.png", pcb_rotate=(180, 0, 0), size=(200, 150)
+      )
       image3d.export_image3d(
-          brd, 'api_3d_yrot1.png', pcb_rotate=(0, 45, 0), size=(200, 150))
+          brd, "api_3d_yrot1.png", pcb_rotate=(0, 45, 0), size=(200, 150)
+      )
       image3d.export_image3d(
-          brd, 'api_3d_yrot2.png', pcb_rotate=(0, 90, 0), size=(200, 150))
+          brd, "api_3d_yrot2.png", pcb_rotate=(0, 90, 0), size=(200, 150)
+      )
       image3d.export_image3d(
-          brd, 'api_3d_yrot3.png', pcb_rotate=(0, 135, 0), size=(200, 150))
+          brd, "api_3d_yrot3.png", pcb_rotate=(0, 135, 0), size=(200, 150)
+      )
   #-#
 
 Start the example program::
@@ -177,31 +180,31 @@ Example for partlist export::
   #-- include('examples/partlist_example.py')--#
   from eagexp import partlist
 
-  sch = '/usr/share/eagle/projects/examples/singlesided/singlesided.sch'
-  brd = '/usr/share/eagle/projects/examples/singlesided/singlesided.brd'
+  sch = "/usr/share/eagle/projects/examples/singlesided/singlesided.sch"
+  brd = "/usr/share/eagle/projects/examples/singlesided/singlesided.brd"
 
   if __name__ == "__main__":
-      print( 'raw_partlist of ' + sch )
-      print( "'''" )
-      print( partlist.raw_partlist(sch) )
-      print( "'''" )
-      
+      print("raw_partlist of " + sch)
+      print("'''")
+      print(partlist.raw_partlist(sch))
+      print("'''")
+
       print()
-      
-      print( 'raw_partlist of ' + brd )
-      print( "'''" )
-      print( partlist.raw_partlist(brd) )
-      print( "'''" )
-      
+
+      print("raw_partlist of " + brd)
+      print("'''")
+      print(partlist.raw_partlist(brd))
+      print("'''")
+
       print()
-      
-      print( 'structured_partlist of ' + sch )
-      print( partlist.structured_partlist(sch) )
-      
+
+      print("structured_partlist of " + sch)
+      print(partlist.structured_partlist(sch))
+
       print()
-      
-      print( 'structured_partlist of ' + brd )
-      print( partlist.structured_partlist(brd) )
+
+      print("structured_partlist of " + brd)
+      print(partlist.structured_partlist(brd))
   #-#
 
 Start the example program::
@@ -211,9 +214,9 @@ Start the example program::
   '''
   Partlist
 
-  Exported from singlesided.sch at 2016.03.05. 8:58
+  Exported from singlesided.sch at 12 Mar 2020 15:15:09
 
-  EAGLE Version 6.5.0 Copyright (c) 1988-2013 CadSoft
+  EAGLE Version 6.6.0 Copyright (c) 1988-2014 CadSoft
 
   Assembly variant: 
 
@@ -238,9 +241,9 @@ Start the example program::
   '''
   Partlist
 
-  Exported from singlesided.brd at 2016.03.05. 8:58
+  Exported from singlesided.brd at 12 Mar 2020 15:15:11
 
-  EAGLE Version 6.5.0 Copyright (c) 1988-2013 CadSoft
+  EAGLE Version 6.6.0 Copyright (c) 1988-2014 CadSoft
 
   Assembly variant: 
 
@@ -294,9 +297,9 @@ Start the eagexp module directly with python::
   #-- sh('python -m eagexp.partlist /usr/share/eagle/projects/examples/singlesided/singlesided.sch')--#
   Partlist
 
-  Exported from singlesided.sch at 2016.03.05. 8:58
+  Exported from singlesided.sch at 12 Mar 2020 15:15:18
 
-  EAGLE Version 6.5.0 Copyright (c) 1988-2013 CadSoft
+  EAGLE Version 6.6.0 Copyright (c) 1988-2014 CadSoft
 
   Assembly variant: 
 
@@ -356,9 +359,9 @@ Start the eagexp module directly with python::
   #-- sh('python -m eagexp.partlist /usr/share/eagle/projects/examples/singlesided/singlesided.brd')--#
   Partlist
 
-  Exported from singlesided.brd at 2016.03.05. 8:59
+  Exported from singlesided.brd at 12 Mar 2020 15:15:26
 
-  EAGLE Version 6.5.0 Copyright (c) 1988-2013 CadSoft
+  EAGLE Version 6.6.0 Copyright (c) 1988-2014 CadSoft
 
   Assembly variant: 
 
@@ -388,13 +391,12 @@ airwires
   #-- include('examples/airwires.py')--#
   from eagexp.airwires import airwires
 
-  brd1 = '/usr/share/eagle/projects/examples/singlesided/singlesided.brd'
-  brd2 = '/usr/share/eagle/projects/examples/tutorial/demo2.brd'
+  brd1 = "/usr/share/eagle/projects/examples/singlesided/singlesided.brd"
+  brd2 = "/usr/share/eagle/projects/examples/tutorial/demo2.brd"
 
   if __name__ == "__main__":
-      print( airwires(brd1) )    
-      print( airwires(brd2) )
-
+      print(airwires(brd1))
+      print(airwires(brd2))
   #-#
 
 ::
@@ -411,17 +413,15 @@ Command-line help
 ::
 
   #-- sh('python -m eagexp.image --help')--#
-  usage: image.py [-h] [-t TIMEOUT] [-p PALETTE] [-r RESOLUTION] [-l LAYERS]
-                  [-c COMMAND] [-m] [-s] [--debug] [--version]
+  usage: image.py [-h] [-t TIMEOUT] [-p PALETTE] [-r RESOLUTION] [-l LAYERS] [-c COMMAND] [-m] [-s] [--debug] [--version]
                   input output
 
-  Exporting eagle .sch or .brd file into image file. GUI is not displayed if
-  ``pyvirtualdisplay`` is installed. If export is blocked somehow (e.g. popup
-  window is displayed) then after timeout operation is canceled with exception.
-  Problem can be investigated by setting 'showgui' flag.
+  Exporting eagle .sch or .brd file into image file. GUI is not displayed if ``pyvirtualdisplay`` is installed. If export
+  is blocked somehow (e.g. popup window is displayed) then after timeout operation is canceled with exception. Problem can
+  be investigated by setting 'showgui' flag.
 
-  Exporting generates an image file with a format corresponding to the given
-  filename extension. The following image formats are available:
+  Exporting generates an image file with a format corresponding to the given filename extension. The following image
+  formats are available:
 
   .bmp    Windows Bitmap Files
 
@@ -464,15 +464,11 @@ Command-line help
 ::
 
   #-- sh('python -m eagexp.image3d --help')--#
-  usage: image3d.py [-h] [-s SIZE] [-p PCB_ROTATE] [-t TIMEOUT] [--showgui]
-                    [--debug] [--version]
-                    input output
+  usage: image3d.py [-h] [-s SIZE] [-p PCB_ROTATE] [-t TIMEOUT] [--showgui] [--debug] [--version] input output
 
-  Exporting eagle .brd file into 3D image file using Eagle3D and povray. GUI is
-  not displayed if ``pyvirtualdisplay`` is installed. If export is blocked
-  somehow (e.g. popup window is displayed) then after timeout operation is
-  canceled with exception. Problem can be investigated by setting 'showgui'
-  flag.
+  Exporting eagle .brd file into 3D image file using Eagle3D and povray. GUI is not displayed if ``pyvirtualdisplay`` is
+  installed. If export is blocked somehow (e.g. popup window is displayed) then after timeout operation is canceled with
+  exception. Problem can be investigated by setting 'showgui' flag.
 
   positional arguments:
     input                 eagle .brd file name
