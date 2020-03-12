@@ -1,32 +1,52 @@
 language: python
-python:
- - "2.7"
- - "3.6"
+# python:
+#  - "2.7"
+#  - "3.6"
 
 matrix:
   include:
-    - name: 3.7_xenial
+    - name: 2.7_bionic
+      python: 2.7
+      dist: bionic
+
+    - name: 3.6_bionic
+      python: 3.6
+      dist: bionic
+
+    - name: 3.7_bionic
       python: 3.7
-      dist: xenial
-    - name: 3.8_xenial
+      dist: bionic
+
+    - name: 3.8_bionic
       python: 3.8
-      dist: xenial
+      dist: bionic
+
+addons:
+  apt:
+    packages:
+      - xvfb
+      - xserver-xephyr
+      - scrot
+      - xdotool
+      - povray
+      - povray-includes
+
+before_install:
+  - sudo dpkg --add-architecture i386
+  - wget -O eagle.deb 'http://archive.ubuntu.com/ubuntu/pool/multiverse/e/eagle/eagle_6.6.0-2_i386.deb'
+  - sudo dpkg -i eagle.deb || true
+  - sudo apt --fix-broken -y install
+  # - sudo apt-get install -y eagle:i386
 
 install:
- - sudo apt-get update -qq 
- - sudo apt-get install python-dev xvfb
- - sudo apt-get install scrot libjpeg-dev zlib1g-dev xdotool eagle:i386 xserver-xephyr
- - sudo apt-get install libboost-thread-dev zlib1g-dev libpng12-dev libjpeg-turbo8-dev libtiff4-dev libopenexr-dev libsdl-gfx1.2-dev
- - pip install -r requirements-test.txt
- - pip install .
- - pip install coveralls
+  - pip install coveralls
+  - pip install -r requirements-test.txt
+  - pip install --upgrade .
 
-script:  
- - xauth add :0 . `mcookie`
- - cd tests 
- - nosetests -v --with-coverage --cover-package=eagexp test_airwires.py test_cli.py test_func.py test_partlist.py test_version.py 
-  
+script:
+  - cd tests
+  - nosetests -v --with-coverage --cover-package=eagexp .
+# - xauth add :0 . `mcookie`
+
 after_success:
- - coveralls
-
-
+  - coveralls
