@@ -12,7 +12,7 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "ubuntu/trusty32"
+  config.vm.box = "ubuntu/bionic64"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -43,13 +43,13 @@ Vagrant.configure(2) do |config|
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
   #
-  # config.vm.provider "virtualbox" do |vb|
+   config.vm.provider "virtualbox" do |vb|
   #   # Display the VirtualBox GUI when booting the machine
   #   vb.gui = true
   #
   #   # Customize the amount of memory on the VM:
-  #   vb.memory = "1024"
-  # end
+     vb.memory = "1024"
+   end
   #
   # View the documentation for the provider you are using for more
   # information on available options.
@@ -67,7 +67,9 @@ Vagrant.configure(2) do |config|
   $script = "
   export DEBIAN_FRONTEND=noninteractive
   echo 'export distutils_issue8876_workaround_enabled=1' >> /home/vagrant/.profile
-  
+  echo 'export export LC_ALL=C' >> /home/vagrant/.profile
+  sudo dpkg --add-architecture i386
+
 # enable multiverse and backports
 #  echo 'deb http://archive.ubuntu.com/ubuntu trusty multiverse' >> /etc/apt/sources.list
 #  echo 'deb http://archive.ubuntu.com/ubuntu trusty-backports main restricted universe multiverse' >> /etc/apt/sources.list
@@ -85,10 +87,17 @@ Vagrant.configure(2) do |config|
   sudo apt-get install -y mc python-pip xvfb
 
 # for pillow source install
-  sudo apt-get install -y libjpeg-dev zlib1g-dev
+#  sudo apt-get install -y libjpeg-dev zlib1g-dev
 
+# eagle
+  TEMP_DEB=$(mktemp)
+  wget -O $TEMP_DEB 'http://archive.ubuntu.com/ubuntu/pool/multiverse/e/eagle/eagle_6.6.0-2_i386.deb' 
+  sudo dpkg -i $TEMP_DEB
+  sudo apt --fix-broken -y install
+  #sudo apt-get install -y eagle:i386
+  
 # project dependencies
-  sudo apt-get install -y scrot eagle povray  python-pil xdotool xserver-xephyr
+  sudo apt-get install -y scrot povray  python-pil xdotool xserver-xephyr
 
 # test dependencies
   sudo pip install -r /vagrant/requirements-test.txt
