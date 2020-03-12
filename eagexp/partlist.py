@@ -46,6 +46,7 @@ def parse_partlist(str):
     """
     lines = str.strip().splitlines()
     lines = filter(len, lines)
+    lines = list(lines)
     hind = header_index(lines)
     if hind is None:
         log.debug("empty partlist found")
@@ -112,4 +113,4 @@ def print_partlist(input, timeout=20, showgui=False):
     :param showgui: Bool, True -> do not hide eagle GUI
     :rtype: None
     """
-    print raw_partlist(input=input, timeout=timeout, showgui=showgui)
+    print(raw_partlist(input=input, timeout=timeout, showgui=showgui))
