@@ -1,4 +1,5 @@
 import logging
+
 from eagexp.about import __version__
 
 USE_DISPLAY = 0

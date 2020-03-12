@@ -1,9 +1,10 @@
+import tempfile
+from unittest import TestCase
+
 from easyprocess import Proc
 from nose.tools import eq_
 from path import Path
 from pyvirtualdisplay.display import Display
-from unittest import TestCase
-import tempfile
 
 EXAMPLES = Path("/usr/share/eagle/projects/examples")
 

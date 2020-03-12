@@ -1,13 +1,15 @@
-from eagexp import __version__
-from eagexp.cmd import command_eagle, EagleError
-from eagexp.util import norm_path
+import logging
+import os
+import tempfile
+
 from easyprocess import Proc
 from entrypoint2 import entrypoint
 from path import Path
 from PIL import Image
-import logging
-import os
-import tempfile
+
+from eagexp import __version__
+from eagexp.cmd import EagleError, command_eagle
+from eagexp.util import norm_path
 
 log = logging.getLogger(__name__)
 log.debug("version=" + __version__)

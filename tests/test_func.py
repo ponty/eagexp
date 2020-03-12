@@ -1,7 +1,9 @@
-from eagexp.image import export_image
-from path import Path
-from unittest import TestCase
 import tempfile
+from unittest import TestCase
+
+from path import Path
+
+from eagexp.image import export_image
 
 VISIBLE = 0
 EXAMPLES = Path("/usr/share/eagle/projects/examples")

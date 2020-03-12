@@ -1,7 +1,8 @@
-from eagexp.cmd import command_eagle
-from path import Path
 import tempfile
 
+from path import Path
+
+from eagexp.cmd import command_eagle
 
 ulp_templ = r"""
 int count=0;

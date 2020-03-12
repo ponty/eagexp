@@ -1,7 +1,9 @@
-from eagexp.partlist import raw_partlist, structured_partlist
-from path import Path
 from pprint import pprint
 from unittest import TestCase
+
+from path import Path
+
+from eagexp.partlist import raw_partlist, structured_partlist
 
 EXAMPLES = Path("/usr/share/eagle/projects/examples")
 

@@ -1,12 +1,14 @@
-from eagexp import USE_DISPLAY
-from eagexp.util import norm_path
-from easyprocess import EasyProcess
 import os
-from path import Path
-from pyvirtualdisplay import Display
 import shutil
 import tempfile
 import time
+
+from easyprocess import EasyProcess
+from path import Path
+from pyvirtualdisplay import Display
+
+from eagexp import USE_DISPLAY
+from eagexp.util import norm_path
 
 # import pyscreenshot
 

@@ -1,7 +1,9 @@
-from eagexp.airwires import airwires
-from nose.tools import eq_
 from unittest import TestCase
+
+from nose.tools import eq_
 from path import Path
+
+from eagexp.airwires import airwires
 
 EXAMPLES = Path("/usr/share/eagle/projects/examples")
 

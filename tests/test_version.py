@@ -1,6 +1,6 @@
-from eagexp.version import extract_version
 from nose.tools import eq_
 
+from eagexp.version import extract_version
 
 V65 = """EAGLE Version 6.5.0 Copyright (c) 1988-2013 CadSoft
 Syntax: eagle [options] [filename [layer...]]"""

@@ -1,11 +1,13 @@
+import logging
+import tempfile
+
+from entrypoint2 import entrypoint
+from PIL import Image, ImageOps
+
 from eagexp import __version__
 from eagexp.cmd import command_eagle
 from eagexp.exp import export_command
 from eagexp.util import norm_path
-from entrypoint2 import entrypoint
-from PIL import Image, ImageOps
-import logging
-import tempfile
 
 log = logging.getLogger(__name__)
 log.debug("version=" + __version__)
