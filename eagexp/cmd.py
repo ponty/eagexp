@@ -22,10 +22,12 @@ class EagleError(Exception):
 def accept_freeware_license():
     """different Eagle versions need differnt TAB count.
     6.5  -> 2
-    6.6  -> 3
+    6.6  -> 2 (sometimes 3?)
     7.4  -> 2
     """
-    ntab = 3 if version().startswith("6.6.") else 2
+    ntab = 2
+    # ntab = 3 if version().startswith("6.6.") else 2
+    # TODO: replace xdotool with python lib
     for _ in range(ntab):
         EasyProcess("xdotool key KP_Tab").call()
         time.sleep(0.5)
