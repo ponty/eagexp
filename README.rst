@@ -2,10 +2,9 @@ eagexp can export eagle_ partlist or image (2D/3D) of schematic or board.
 
 Links:
  * home: https://github.com/ponty/eagexp
- * documentation: http://eagexp.readthedocs.org
  * PYPI: https://pypi.python.org/pypi/eagexp
 
-|Travis| |Coveralls| |Latest Version| |Supported Python versions| |License| |Code Health| |Documentation|
+|Travis| |License|
 
 Features:
  - written in python
@@ -518,17 +517,6 @@ Command-line help
 
 .. |Travis| image:: https://travis-ci.org/ponty/eagexp.svg?branch=master
    :target: https://travis-ci.org/ponty/eagexp/
-.. |Coveralls| image:: http://img.shields.io/coveralls/ponty/eagexp/master.svg
-   :target: https://coveralls.io/r/ponty/eagexp/
-.. |Latest Version| image:: https://img.shields.io/pypi/v/eagexp.svg
-   :target: https://pypi.python.org/pypi/eagexp/
-.. |Supported Python versions| image:: https://img.shields.io/pypi/pyversions/eagexp.svg
-   :target: https://pypi.python.org/pypi/eagexp/
 .. |License| image:: https://img.shields.io/pypi/l/eagexp.svg
    :target: https://pypi.python.org/pypi/eagexp/
-.. |Code Health| image:: https://landscape.io/github/ponty/eagexp/master/landscape.svg?style=flat
-   :target: https://landscape.io/github/ponty/eagexp/master
-.. |Documentation| image:: https://readthedocs.org/projects/eagexp/badge/?version=latest
-   :target: http://eagexp.readthedocs.org
-
    
