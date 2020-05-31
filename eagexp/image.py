@@ -27,7 +27,6 @@ def export_image(
 ):
     """
     Exporting eagle .sch or .brd file into image file.
-    GUI is not displayed if ``pyvirtualdisplay`` is installed.
     If export is blocked somehow (e.g. popup window is displayed) then after timeout operation is canceled with exception.
     Problem can be investigated by setting 'showgui' flag.
 

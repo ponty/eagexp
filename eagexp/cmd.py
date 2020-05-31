@@ -7,7 +7,6 @@ from easyprocess import EasyProcess
 from path import Path
 from pyvirtualdisplay import Display
 
-from eagexp import USE_DISPLAY
 from eagexp.util import norm_path
 
 # import pyscreenshot
@@ -99,11 +98,8 @@ def command_eagle(input, commands=[], timeout=TIMEOUT, showgui=False, callback=N
 
     os.chdir(tmp_dir)
 
-    if USE_DISPLAY:
-        with Display(visible=showgui, size=(800, 600)):
-            time.sleep(1)
-            call_eagle()
-    else:
+    with Display(visible=showgui, size=(800, 600)):
+        time.sleep(1)
         call_eagle()
 
     os.chdir(curdir)
