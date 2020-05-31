@@ -1,7 +1,4 @@
 language: python
-# python:
-#  - "2.7"
-#  - "3.6"
 
 matrix:
   include:
@@ -44,6 +41,5 @@ install:
 
 script:
   - cd tests
-  - nosetests -v --with-coverage --cover-package=eagexp .
-# - xauth add :0 . `mcookie`
+  - pytest -v .
 

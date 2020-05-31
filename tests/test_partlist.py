@@ -1,5 +1,4 @@
 from pprint import pprint
-from unittest import TestCase
 
 from path import Path
 
@@ -24,10 +23,10 @@ def check_dir(d):
         export(x)
 
 
-class Test(TestCase):
-    def test_examples(self):
-        check_dir(EXAMPLES)
+def test_examples():
+    check_dir(EXAMPLES)
 
-    def test_data(self):
-        data = Path(__file__).parent / "data"
-        check_dir(data)
+
+def test_data():
+    data = Path(__file__).parent / "data"
+    check_dir(data)

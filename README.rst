@@ -45,28 +45,20 @@ General
 
  * install eagle_
  * install povray_ (optional for 3D)
- * install pip_
  * install PIL_
  * install pyvirtualdisplay_ , Xvfb_
  * install the program::
 
-    # as root
-    pip install eagexp
+    python3 -m pip install eagexp
 
 
 Ubuntu 14.04
 ------------
 ::
 
-    sudo apt-get install python-pip eagle povray  python-pil xvfb xdotool
-    sudo pip install eagexp
+    sudo apt-get install eagle povray  python-pil xvfb xdotool
+    python3 -m  pip install eagexp
     
-Uninstall
----------
-::
-
-    # as root
-    pip uninstall eagexp
 
 Usage
 =====

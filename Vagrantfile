@@ -83,10 +83,7 @@ Vagrant.configure(2) do |config|
   sudo apt-get install -y python3-distutils
 
 # tools
-  sudo apt-get install -y mc python-pip xvfb
-
-# for pillow source install
-#  sudo apt-get install -y libjpeg-dev zlib1g-dev
+  sudo apt-get install -y mc python3-pip xvfb
 
 # eagle
   TEMP_DEB=$(mktemp)
@@ -99,10 +96,9 @@ Vagrant.configure(2) do |config|
   sudo apt-get install -y scrot povray  python-pil xdotool xserver-xephyr
 
 # test dependencies
-  sudo pip install -r /vagrant/requirements-test.txt
+  sudo python3 -m pip install tox
   
 # doc dependencies
-  sudo pip install -r /vagrant/requirements-doc.txt
   
   "
       config.vm.provision "shell", inline: $script

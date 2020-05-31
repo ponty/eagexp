@@ -1,10 +1,1 @@
-graft docs
 include LICENSE*
-include pavement.py
-include TODO*
-include requirements.txt
-include CHANGES*
-include README*
-include setup.py
-recursive-include eagexp *
-prune docs/_build

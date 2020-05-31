@@ -21,7 +21,6 @@ pip-log.txt
 *.class
 #*.png
 .version
-nosetests.xml
 
 .*
 !.git*

@@ -1,5 +1,4 @@
 import tempfile
-from unittest import TestCase
 
 from path import Path
 
@@ -17,18 +16,18 @@ def export(fin, **kwargs):
     # path(fout.name).remove()
 
 
-class Test(TestCase):
-    def test_all(self):
-        brd_ls = EXAMPLES.walkfiles("*.brd")
-        brd_ls = list(brd_ls)
+def test_all():
+    brd_ls = EXAMPLES.walkfiles("*.brd")
+    brd_ls = list(brd_ls)
 
-        for x in brd_ls:
-            export(x)
+    for x in brd_ls:
+        export(x)
 
-    def test_options(self):
-        brd_ls = EXAMPLES.walkfiles("*.brd")
-        brd_ls = list(brd_ls)
 
-        export(brd_ls[0], timeout=65)
-        export(brd_ls[0], size=(200, 100))
-        export(brd_ls[0], size=(2000, 1000))
+def test_options():
+    brd_ls = EXAMPLES.walkfiles("*.brd")
+    brd_ls = list(brd_ls)
+
+    export(brd_ls[0], timeout=65)
+    export(brd_ls[0], size=(200, 100))
+    export(brd_ls[0], size=(2000, 1000))

@@ -1,5 +1,2 @@
-tox
-nose
-pyvirtualdisplay
+pytest
 pillow
-entrypoint2

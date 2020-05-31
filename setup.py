@@ -4,17 +4,24 @@ from setuptools import setup
 
 
 NAME = "eagexp"
-URL = "https://github.com/ponty/eagexp"
-DESCRIPTION = "export eagle schematic or board to image or partlist"
-PACKAGES = [
-    NAME,
-    NAME + ".examples",
-]
 
 # get __version__
 __version__ = None
 exec(open(os.path.join(NAME, "about.py")).read())
 VERSION = __version__
+
+URL = "https://github.com/ponty/eagexp"
+DESCRIPTION = "export eagle schematic or board to image or partlist"
+LONG_DESCRIPTION = """export eagle schematic or board to image or partlist
+
+Documentation: https://github.com/ponty/eagexp/tree/"""
+LONG_DESCRIPTION += VERSION
+
+PACKAGES = [
+    NAME,
+    NAME + ".examples",
+]
+
 
 # extra = {}
 # if sys.version_info >= (3,):
@@ -40,7 +47,7 @@ setup(
     name=NAME,
     version=VERSION,
     description=DESCRIPTION,
-    long_description=open("README.rst", "r").read(),
+    long_description=LONG_DESCRIPTION,
     classifiers=classifiers,
     keywords="eagle",
     author="ponty",
@@ -49,8 +56,6 @@ setup(
     license="BSD",
     packages=PACKAGES,
     include_package_data=True,
-    #     test_suite='nose.collector',
     zip_safe=False,
     install_requires=install_requires,
-    # **extra
 )

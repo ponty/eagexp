@@ -1,5 +1,4 @@
 import tempfile
-from unittest import TestCase
 
 from path import Path
 
@@ -17,36 +16,36 @@ def export(fin, **kwargs):
     # path(fout.name).remove()
 
 
-class Test(TestCase):
-    def test_all(self):
-        sch_ls = EXAMPLES.walkfiles("*.sch")
-        brd_ls = EXAMPLES.walkfiles("*.brd")
-        sch_ls = list(sch_ls)
-        brd_ls = list(brd_ls)
-        all = sch_ls + brd_ls
+def test_all():
+    sch_ls = EXAMPLES.walkfiles("*.sch")
+    brd_ls = EXAMPLES.walkfiles("*.brd")
+    sch_ls = list(sch_ls)
+    brd_ls = list(brd_ls)
+    all = sch_ls + brd_ls
 
-        for x in all:
-            export(x)
+    for x in all:
+        export(x)
 
-    def test_options(self):
-        sch_ls = EXAMPLES.walkfiles("*.sch")
-        brd_ls = EXAMPLES.walkfiles("*.brd")
-        sch_ls = list(sch_ls)
-        brd_ls = list(brd_ls)
-        all = sch_ls + brd_ls
 
-        export(brd_ls[0], layers=["top"])
-        export(brd_ls[0], layers=["top bottom"])
+def test_options():
+    sch_ls = EXAMPLES.walkfiles("*.sch")
+    brd_ls = EXAMPLES.walkfiles("*.brd")
+    sch_ls = list(sch_ls)
+    brd_ls = list(brd_ls)
+    all = sch_ls + brd_ls
 
-        export(brd_ls[0], mirror=1)
+    export(brd_ls[0], layers=["top"])
+    export(brd_ls[0], layers=["top bottom"])
 
-        export(brd_ls[0], command="display all")
+    export(brd_ls[0], mirror=1)
 
-        export(all[0], resolution=50)
-        #        export(all[0], resolution=300)
-        #        export(all[0], resolution=1000)
+    export(brd_ls[0], command="display all")
 
-        export(all[0], palette=None)
-        export(all[0], palette="white")
-        export(all[0], palette="black")
-        export(all[0], palette="colored")
+    export(all[0], resolution=50)
+    #        export(all[0], resolution=300)
+    #        export(all[0], resolution=1000)
+
+    export(all[0], palette=None)
+    export(all[0], palette="white")
+    export(all[0], palette="black")
+    export(all[0], palette="colored")
