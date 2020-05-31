@@ -39,7 +39,6 @@ before_install:
   # - sudo apt-get install -y eagle:i386
 
 install:
-  - pip install coveralls
   - pip install -r requirements-test.txt
   - pip install --upgrade .
 
@@ -48,5 +47,3 @@ script:
   - nosetests -v --with-coverage --cover-package=eagexp .
 # - xauth add :0 . `mcookie`
 
-after_success:
-  - coveralls
