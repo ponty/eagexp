@@ -1,7 +1,7 @@
 import tempfile
 from unittest import TestCase
 
-from easyprocess import Proc
+from easyprocess import EasyProcess
 from nose.tools import eq_
 from path import Path
 from pyvirtualdisplay.display import Display
@@ -13,7 +13,7 @@ def export(params, fail=0):
     # mod=path(__file__).parent.parent / 'eagexp.py'
     # cmd='python '+mod+' '+params
     cmd = "python -m eagexp.image " + params
-    p = Proc(cmd).call()
+    p = EasyProcess(cmd).call()
     if fail:
         eq_(p.return_code != 0, True)
     else:

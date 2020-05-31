@@ -90,7 +90,7 @@ def command_eagle(input, commands=[], timeout=TIMEOUT, showgui=False, callback=N
 
     #                     break
 
-    #         p = Proc(cmd).call(timeout=timeout)
+    #         p = EasyProcess(cmd).call(timeout=timeout)
     #         if p.return_code != 0:
     #             raise EagleError('eagle return code is not zero, proc=' + str(p))
 

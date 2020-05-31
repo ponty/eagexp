@@ -1,4 +1,4 @@
-from easyprocess import Proc
+from easyprocess import EasyProcess
 from entrypoint2 import entrypoint
 from pyvirtualdisplay.display import Display
 
@@ -25,7 +25,7 @@ def version():
 
     :rtype: string
     """
-    return extract_version(Proc("eagle -?").call().stdout)
+    return extract_version(EasyProcess("eagle -?").call().stdout)
 
 
 @entrypoint

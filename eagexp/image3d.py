@@ -2,7 +2,7 @@ import logging
 import os
 import tempfile
 
-from easyprocess import Proc
+from easyprocess import EasyProcess
 from entrypoint2 import entrypoint
 from path import Path
 from PIL import Image
@@ -72,7 +72,7 @@ def export_image3d(
         cmd += ["-o" + fpng]
         cmd += ["-L" + eagle3d]
         cmd += [pov]
-        p = Proc(cmd).call()
+        p = EasyProcess(cmd).call()
         if not fpng.exists():
             raise EagleError("povray error, proc=%s" % p)
         fpng.copy(output)
