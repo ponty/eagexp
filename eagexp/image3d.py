@@ -34,6 +34,8 @@ def export_image3d(
     """
     input = norm_path(input)
     output = norm_path(output)
+    if not output.endswith(".png"):
+        raise ValueError("use .png extension!")
 
     ext = os.path.splitext(input)[1]
     if ext not in [".brd"]:

@@ -29,29 +29,10 @@ def export_image(
     Exporting eagle .sch or .brd file into image file.
     If export is blocked somehow (e.g. popup window is displayed) then after timeout operation is canceled with exception.
     Problem can be investigated by setting 'showgui' flag.
-
-    Exporting generates an image file with a format corresponding
-    to the given filename extension.
-    The following image formats are available:
-
-    .bmp    Windows Bitmap Files
-
-    .png    Portable Network Graphics Files
-
-    .pbm    Portable Bitmap Files
-
-    .pgm    Portable Grayscale Bitmap Files
-
-    .ppm    Portable Pixelmap Files
-
-    .tif    TIFF Files
-
-    .xbm    X Bitmap Files
-
-    .xpm    X Pixmap Files
+    Exporting generates an image file. Only PNG format is supported
 
     :param input: eagle .sch or .brd file name
-    :param output: image file name, existing file will be removed first!
+    :param output: image file name (e.g. 'eagle.png')
     :param palette: background color [None,black,white,colored]
     :param resolution: image resolution in dpi (50..2400)
     :param timeout: operation is canceled after this timeout (sec)
@@ -63,6 +44,8 @@ def export_image(
     """
     input = norm_path(input)
     output = norm_path(output)
+    if not output.endswith(".png"):
+        raise ValueError("use .png extension!")
 
     if palette:
         palette = palette.lower()
