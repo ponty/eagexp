@@ -24,7 +24,6 @@ addons:
       - xvfb
       - xserver-xephyr
       - scrot
-      - xdotool
       - povray
       - povray-includes
 

@@ -30,15 +30,6 @@ Known problems:
  - slow: eagle is opened and closed for each export
  - high DPI does not work (memory problem?)
    
-Basic usage
-===========
-
-    >>> from eagexp import image, partlist
-    >>> brd='~/.eagle/projects/examples/singlesided/singlesided.brd'
-    >>> image.export_image(brd, 'brd.png', resolution=600)
-    >>> print partlist.raw_partlist(brd)
-
-
 How it works
 ============
 
@@ -51,7 +42,6 @@ Installation
 ============
 
  * install [eagle][3]
- * install xdotool
  * install [povray][4] (optional for 3D)
  * install [Pillow][5]
  * install [pyvirtualdisplay][2] , [Xvfb][1]
@@ -61,23 +51,17 @@ Installation
 $ python3 -m pip install eagexp
 ```
 
-On Ubuntu 14.04
+On Ubuntu 16.04 
 
-```console
-$ sudo apt-get install eagle povray  python-pil xvfb xdotool
-$ python3 -m  pip install eagexp
-```
-
-On Ubuntu 18.04
 ```console
 $ sudo dpkg --add-architecture i386
-$ TEMP_DEB=$(mktemp)
-$ wget -O $TEMP_DEB 'http://archive.ubuntu.com/ubuntu/pool/multiverse/e/eagle/eagle_6.6.0-2_i386.deb' 
-$ sudo dpkg -i $TEMP_DEB
-$ sudo apt --fix-broken -y install
-$ sudo apt-get install povray  python-pil xvfb xdotool
+$ sudo apt-get install eagle
+$ sudo apt-get install povray  python-pil xvfb
 $ python3 -m  pip install eagexp
 ```
+
+Eagle was dropped from the repository in the later Ubuntu versions.
+
 
 Export from python code
 =======================

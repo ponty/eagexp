@@ -93,7 +93,7 @@ Vagrant.configure(2) do |config|
   #sudo apt-get install -y eagle:i386
   
 # project dependencies
-  sudo apt-get install -y scrot povray  python-pil xdotool xserver-xephyr
+  sudo apt-get install -y scrot povray  python-pil xserver-xephyr
 
 # test dependencies
   sudo python3 -m pip install tox

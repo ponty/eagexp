@@ -41,7 +41,14 @@ classifiers = [
     "Programming Language :: Python :: 3.8",
 ]
 
-install_requires = open("requirements.txt").read().split("\n")
+install_requires = [
+    "pillow",
+    "path.py",
+    "PyUserInput",
+    "PyScreenshot",
+    "easyprocess",
+    "pyvirtualdisplay",
+]
 
 setup(
     name=NAME,

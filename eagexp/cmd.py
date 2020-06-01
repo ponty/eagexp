@@ -1,3 +1,4 @@
+from pykeyboard import PyKeyboard
 import os
 import shutil
 import tempfile
@@ -26,17 +27,20 @@ def accept_freeware_license():
     7.4  -> 2
     """
     ntab = 2
+    k = PyKeyboard()
     # ntab = 3 if version().startswith("6.6.") else 2
-    # TODO: replace xdotool with python lib
     for _ in range(ntab):
-        EasyProcess("xdotool key KP_Tab").call()
+        k.tap_key(k.tab_key)
+        #     EasyProcess("xdotool key KP_Tab").call()
         time.sleep(0.5)
-    EasyProcess("xdotool key KP_Space").call()
+    # EasyProcess("xdotool key KP_Space").call()
+    k.tap_key(" ")
 
     time.sleep(0.5)
 
     # say OK to any more question
-    EasyProcess("xdotool key KP_Space").call()
+    # EasyProcess("xdotool key KP_Space").call()
+    k.tap_key(" ")
 
 
 def command_eagle(input, commands=[], timeout=TIMEOUT, showgui=False, callback=None):
@@ -84,14 +88,7 @@ def command_eagle(input, commands=[], timeout=TIMEOUT, showgui=False, callback=N
                         accept_freeware_license()
                         accept_tries += 1
                 if t > timeout:
-                    #                     pyscreenshot.grab_to_file('/vagrant/xxx.png')
                     raise EagleError("eagle return code is not zero, proc=" + str(p))
-
-    #                     break
-
-    #         p = EasyProcess(cmd).call(timeout=timeout)
-    #         if p.return_code != 0:
-    #             raise EagleError('eagle return code is not zero, proc=' + str(p))
 
     curdir = Path.getcwd()
     curdir = norm_path(curdir)
