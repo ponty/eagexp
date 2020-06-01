@@ -54,10 +54,12 @@ def parse_partlist(str):
         return ([], [])
 
     header_line = lines[hind]
-    header = header_line.split("  ")
-    header = filter(len, header)
+    log.debug("header_line: %s", header_line)
+    header = header_line.strip().split()
+    header = list(filter(len, header))
     positions = [header_line.index(x) for x in header]
     header = [x.strip().split()[0].lower() for x in header]
+    log.debug("header: %s", header)
 
     data_lines = lines[hind + 1 :]
 
