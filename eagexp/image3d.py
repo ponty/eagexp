@@ -58,11 +58,11 @@ def export_image3d(
         templ = "#local pcb_rotate_%s = %s"
         pov = Path(f.replace(".brd", ".pov"))
         if pcb_rotate != (0, 0, 0):
-            s = pov.bytes()
+            s = pov.read_text()
             s = s.replace(templ % ("x", 0), templ % ("x", pcb_rotate[0]))
             s = s.replace(templ % ("y", 0), templ % ("y", pcb_rotate[1]))
             s = s.replace(templ % ("z", 0), templ % ("z", pcb_rotate[2]))
-            pov.write_bytes(s)
+            pov.write_text(s)
         fpng = Path(f.replace(".brd", ".png"))
         cmd = []
         cmd += ["povray"]
