@@ -33,12 +33,16 @@ before_install:
   - sudo dpkg -i eagle.deb || true
   - sudo apt --fix-broken -y install
   # - sudo apt-get install -y eagle:i386
-
 install:
-  - pip install -r requirements-test.txt
-  - pip install --upgrade .
+  - if [ ${TRAVIS_PYTHON_VERSION:0:1} == "2" ]; then PYTHON=python; else PYTHON=python3; fi
+  # - if [ ${TRAVIS_OS_NAME} == "windows" ]; then PYTHON=python; fi
+  - $PYTHON -m pip install $PIPUSER --upgrade -r requirements-test.txt
+  - $PYTHON -m pip install $PIPUSER --upgrade .
+  # - if [ ${TRAVIS_OS_NAME} == "osx" ]; then mkdir /tmp/.X11-unix;sudo chmod 1777 /tmp/.X11-unix;sudo chown root /tmp/.X11-unix/; fi
+  - $PYTHON -m pip install -r requirements-test.txt
+  - $PYTHON -m pip install --upgrade .
 
 script:
   - cd tests
-  - pytest -v .
+  - $PYTHON -m pytest -v .
 
