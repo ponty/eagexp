@@ -1,17 +1,29 @@
-eagexp can export eagle_ partlist or image (2D/3D) of schematic or board.
+eagexp can export [eagle][3] partlist or image (2D/3D) of schematic or board.
+
+![](/doc/gen/api_brd_50.png)
+![](/doc/gen/api_3d_size3.png)
+![](/doc/gen/api_brd_50.png)
+![](/doc/gen/api_3d_size3.png)
+![](/doc/gen/api_brd_50.png)
+
 
 Links:
  * home: https://github.com/ponty/eagexp
  * PYPI: https://pypi.python.org/pypi/eagexp
 
-|Travis| |License|
+
+
+[![Build Status](https://travis-ci.org/ponty/eagexp.svg?branch=master)](https://travis-ci.org/ponty/eagexp)
+
+
+
 
 Features:
  - written in python
  - it can be used as library or as a command line program
- - headless processing using Xvfb_ and pyvirtualdisplay_
+ - headless processing using [Xvfb][1] and [pyvirtualdisplay][2]
  - timeout
- - 3D image export using Eagle3D and povray_
+ - 3D image export using Eagle3D and [povray][4]
  - calculate airwires
  
 Known problems:
@@ -30,40 +42,45 @@ Basic usage
 How it works
 ============
 
-#. start Xvfb_ headless X server using pyvirtualdisplay_
-#. redirect eagle display to Xvfb server by setting $DISPLAY variable.
-#. start eagle_ with EXPORT and QUIT commands
+- start [Xvfb][1] headless X server using [pyvirtualdisplay][2]
+- redirect eagle display to Xvfb server by setting $DISPLAY variable.
+- start [eagle][3] with EXPORT and QUIT commands
 
 
 Installation
 ============
 
-General
--------
-
- * install eagle_
- * install povray_ (optional for 3D)
- * install PIL_
- * install pyvirtualdisplay_ , Xvfb_
+ * install [eagle][3]
+ * install xdotool
+ * install [povray][4] (optional for 3D)
+ * install [Pillow][5]
+ * install [pyvirtualdisplay][2] , [Xvfb][1]
  * install the program:
 
-    python3 -m pip install eagexp
+```console
+$ python3 -m pip install eagexp
+```
 
+On Ubuntu 14.04
 
-Ubuntu 14.04
-------------
-:
+```console
+$ sudo apt-get install eagle povray  python-pil xvfb xdotool
+$ python3 -m  pip install eagexp
+```
 
-    sudo apt-get install eagle povray  python-pil xvfb xdotool
-    python3 -m  pip install eagexp
-    
-
-Usage
-=====
-
+On Ubuntu 18.04
+```console
+$ sudo dpkg --add-architecture i386
+$ TEMP_DEB=$(mktemp)
+$ wget -O $TEMP_DEB 'http://archive.ubuntu.com/ubuntu/pool/multiverse/e/eagle/eagle_6.6.0-2_i386.deb' 
+$ sudo dpkg -i $TEMP_DEB
+$ sudo apt --fix-broken -y install
+$ sudo apt-get install povray  python-pil xvfb xdotool
+$ python3 -m  pip install eagexp
+```
 
 Export from python code
------------------------
+=======================
 
 Example:
 
@@ -107,6 +124,7 @@ Result:
 ![](/doc/gen/api_brd_50.png)
 ![](/doc/gen/api_brd_100.png)
 ![](/doc/gen/api_brd_150.png)
+
 ![](/doc/gen/api_brd_mirror.png)
 ![](/doc/gen/api_brd_layer.png)
 ![](/doc/gen/api_brd_command.png)
@@ -170,10 +188,8 @@ TypeError: a bytes-like object is required, not 'str'
 
 Result:
 
-..  #-- sh('python -m eagexp.examples.image3d_example')--#
-..  #-#
-
 ![](/doc/gen/api_3d.png)
+
 ![](/doc/gen/api_3d_xrot.png)
 ![](/doc/gen/api_3d_yrot1.png)
 ![](/doc/gen/api_3d_yrot2.png)
@@ -188,32 +204,36 @@ Example for partlist export:
 # eagexp/examples/partlist_example.py
 
 from eagexp import partlist
+import pprint
 
 sch = "/usr/share/eagle/projects/examples/singlesided/singlesided.sch"
 brd = "/usr/share/eagle/projects/examples/singlesided/singlesided.brd"
 
+LINE = "-----------------------------"
+pp = pprint.PrettyPrinter(indent=4)
+
 if __name__ == "__main__":
     print("raw_partlist of " + sch)
-    print("'''")
+    print(LINE)
     print(partlist.raw_partlist(sch))
-    print("'''")
+    print(LINE)
 
     print()
 
     print("raw_partlist of " + brd)
-    print("'''")
+    print(LINE)
     print(partlist.raw_partlist(brd))
-    print("'''")
+    print(LINE)
 
     print()
 
     print("structured_partlist of " + sch)
-    print(partlist.structured_partlist(sch))
+    pp.pprint(partlist.structured_partlist(sch))
 
     print()
 
     print("structured_partlist of " + brd)
-    print(partlist.structured_partlist(brd))
+    pp.pprint(partlist.structured_partlist(brd))
 
 ```
 
@@ -222,10 +242,10 @@ Start the example program:
 ```console
 $ python3 -m eagexp.examples.partlist_example
 raw_partlist of /usr/share/eagle/projects/examples/singlesided/singlesided.sch
-'''
+-----------------------------
 Partlist
 
-Exported from singlesided.sch at 31 May 2020 20:55:38
+Exported from singlesided.sch at 1 Jun 2020 07:49:15
 
 EAGLE Version 6.6.0 Copyright (c) 1988-2014 CadSoft
 
@@ -246,13 +266,13 @@ Q1                      XTAL/S          QS           special        1
 R1       2.2k           R-EU_0207/10    0207/10      rcl            1
 U1       78L05          78LXXZ          TO92         linear         1
 
-'''
+-----------------------------
 
 raw_partlist of /usr/share/eagle/projects/examples/singlesided/singlesided.brd
-'''
+-----------------------------
 Partlist
 
-Exported from singlesided.brd at 31 May 2020 20:55:40
+Exported from singlesided.brd at 1 Jun 2020 07:49:17
 
 EAGLE Version 6.6.0 Copyright (c) 1988-2014 CadSoft
 
@@ -273,20 +293,176 @@ Q1                      QS           special        (1550 250)            R0
 R1       2.2k           0207/10      rcl            (900 350)             R0
 U1       78L05          TO92         linear         (1950 650)            R270
 
-'''
+-----------------------------
 
 structured_partlist of /usr/share/eagle/projects/examples/singlesided/singlesided.sch
-([], [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}])
+(   ['part', 'value', 'device', 'package', 'library', 'sheet'],
+    [   {   'device': 'E2,5-6',
+            'library': 'polcap',
+            'package': 'E2,5-6',
+            'part': 'C1',
+            'sheet': '1',
+            'value': '10u'},
+        {   'device': 'E2,5-6',
+            'library': 'polcap',
+            'package': 'E2,5-6',
+            'part': 'C2',
+            'sheet': '1',
+            'value': '10u'},
+        {   'device': 'C-EU025-025X050',
+            'library': 'rcl',
+            'package': 'C025-025X050',
+            'part': 'C3',
+            'sheet': '1',
+            'value': '10n'},
+        {   'device': 'C-EU025-025X050',
+            'library': 'rcl',
+            'package': 'C025-025X050',
+            'part': 'C4',
+            'sheet': '1',
+            'value': '10n'},
+        {   'device': 'C2.5/2',
+            'library': 'capacitor-wima',
+            'package': 'C2,5-2',
+            'part': 'C5',
+            'sheet': '1',
+            'value': '27p'},
+        {   'device': 'C2.5/2',
+            'library': 'capacitor-wima',
+            'package': 'C2,5-2',
+            'part': 'C6',
+            'sheet': '1',
+            'value': '27p'},
+        {   'device': '1N4148',
+            'library': 'diode',
+            'package': 'DO35-10',
+            'part': 'D1',
+            'sheet': '1',
+            'value': '1N4148'},
+        {   'device': 'PIC16F84AP',
+            'library': 'microchip',
+            'package': 'DIL18',
+            'part': 'IC1',
+            'sheet': '1',
+            'value': '16F84'},
+        {   'device': 'PINHD-1X20',
+            'library': 'PINHEAD',
+            'package': '1X20',
+            'part': 'J1',
+            'sheet': '1',
+            'value': ''},
+        {   'device': 'XTAL/S',
+            'library': 'special',
+            'package': 'QS',
+            'part': 'Q1',
+            'sheet': '1',
+            'value': ''},
+        {   'device': 'R-EU_0207/10',
+            'library': 'rcl',
+            'package': '0207/10',
+            'part': 'R1',
+            'sheet': '1',
+            'value': '2.2k'},
+        {   'device': '78LXXZ',
+            'library': 'linear',
+            'package': 'TO92',
+            'part': 'U1',
+            'sheet': '1',
+            'value': '78L05'}])
 
 structured_partlist of /usr/share/eagle/projects/examples/singlesided/singlesided.brd
-([], [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}])
+(   ['part', 'value', 'package', 'library', 'position', '(mil)', 'orientation'],
+    [   {   '(mil)': ')',
+            'library': 'polcap',
+            'orientation': 'R0',
+            'package': 'E2,5-6',
+            'part': 'C1',
+            'position': '(1950 400',
+            'value': '10u'},
+        {   '(mil)': ')',
+            'library': 'polcap',
+            'orientation': 'R0',
+            'package': 'E2,5-6',
+            'part': 'C2',
+            'position': '(1950 900',
+            'value': '10u'},
+        {   '(mil)': ')',
+            'library': 'rcl',
+            'orientation': 'R180',
+            'package': 'C025-025X050',
+            'part': 'C3',
+            'position': '(1950 200',
+            'value': '10n'},
+        {   '(mil)': '0)',
+            'library': 'rcl',
+            'orientation': 'R180',
+            'package': 'C025-025X050',
+            'part': 'C4',
+            'position': '(1950 110',
+            'value': '10n'},
+        {   '(mil)': ')',
+            'library': 'capacitor-wima',
+            'orientation': 'R270',
+            'package': 'C2,5-2',
+            'part': 'C5',
+            'position': '(1700 500',
+            'value': '27p'},
+        {   '(mil)': ')',
+            'library': 'capacitor-wima',
+            'orientation': 'R90',
+            'package': 'C2,5-2',
+            'part': 'C6',
+            'position': '(1250 250',
+            'value': '27p'},
+        {   '(mil)': '',
+            'library': 'diode',
+            'orientation': 'R0',
+            'package': 'DO35-10',
+            'part': 'D1',
+            'position': '(900 200)',
+            'value': '1N4148'},
+        {   '(mil)': ')',
+            'library': 'microchip',
+            'orientation': 'R180',
+            'package': 'DIL18',
+            'part': 'IC1',
+            'position': '(1100 700',
+            'value': '16F84'},
+        {   '(mil)': '0)',
+            'library': 'PINHEAD',
+            'orientation': 'R180',
+            'package': '1X20',
+            'part': 'J1',
+            'position': '(1050 140',
+            'value': ''},
+        {   '(mil)': ')',
+            'library': 'special',
+            'orientation': 'R0',
+            'package': 'QS',
+            'part': 'Q1',
+            'position': '(1550 250',
+            'value': ''},
+        {   '(mil)': '',
+            'library': 'rcl',
+            'orientation': 'R0',
+            'package': '0207/10',
+            'part': 'R1',
+            'position': '(900 350)',
+            'value': '2.2k'},
+        {   '(mil)': ')',
+            'library': 'linear',
+            'orientation': 'R270',
+            'package': 'TO92',
+            'part': 'U1',
+            'position': '(1950 650',
+            'value': '78L05'}])
 ```
 
 Export schematic from command-line
-----------------------------------
+==================================
 
 Export image
-++++++++++++
+------------
 
 Start the eagexp module directly with python:
 
@@ -301,7 +477,7 @@ $ python3 -m eagexp.image /usr/share/eagle/projects/examples/singlesided/singles
 
 
 Export partlist
-+++++++++++++++
+---------------
 
 Start the eagexp module directly with python:
 
@@ -310,7 +486,7 @@ Start the eagexp module directly with python:
 $ python3 -m eagexp.partlist /usr/share/eagle/projects/examples/singlesided/singlesided.sch
 Partlist
 
-Exported from singlesided.sch at 31 May 2020 20:56:06
+Exported from singlesided.sch at 1 Jun 2020 07:49:43
 
 EAGLE Version 6.6.0 Copyright (c) 1988-2014 CadSoft
 
@@ -334,10 +510,10 @@ U1       78L05          78LXXZ          TO92         linear         1
 ```
 
 Export board from command-line
-------------------------------
+==============================
 
 Export image
-++++++++++++
+------------
 
 Start the eagexp module directly with python:
 
@@ -350,7 +526,7 @@ $ python3 -m eagexp.image /usr/share/eagle/projects/examples/singlesided/singles
 ![](/doc/gen/cli_brd.png)
 
 Export 3D image
-+++++++++++++++
+---------------
 
 Start the eagexp module directly with python:
 
@@ -363,7 +539,7 @@ $ python3 -m eagexp.image3d /usr/share/eagle/projects/examples/singlesided/singl
 ![](/doc/gen/cli_3d.png)
 
 Export partlist
-+++++++++++++++
+---------------
 
 Start the eagexp module directly with python:
 
@@ -372,7 +548,7 @@ Start the eagexp module directly with python:
 $ python3 -m eagexp.partlist /usr/share/eagle/projects/examples/singlesided/singlesided.brd
 Partlist
 
-Exported from singlesided.brd at 31 May 2020 20:56:14
+Exported from singlesided.brd at 1 Jun 2020 07:49:50
 
 EAGLE Version 6.6.0 Copyright (c) 1988-2014 CadSoft
 
@@ -525,16 +701,11 @@ optional arguments:
 
 
 
-.. _pip: https://pypi.python.org/pypi/pip
-.. _Xvfb: http://en.wikipedia.org/wiki/Xvfb
-.. _pyvirtualdisplay: https://github.com/ponty/PyVirtualDisplay
-.. _eagle: http://www.cadsoftusa.com/
-.. _povray: http://www.povray.org/
-.. _PIL: http://www.pythonware.com/library/pil/
+[1]: http://en.wikipedia.org/wiki/Xvfb
+[2]: https://github.com/ponty/PyVirtualDisplay
+[3]: http://www.cadsoftusa.com/
+[4]: http://www.povray.org/
+[5]: https://pypi.org/project/Pillow/
 
 
-.. |Travis| image: https://travis-ci.org/ponty/eagexp.svg?branch=master
-   :target: https://travis-ci.org/ponty/eagexp/
-.. |License| image: https://img.shields.io/pypi/l/eagexp.svg
-   :target: https://pypi.python.org/pypi/eagexp/
    

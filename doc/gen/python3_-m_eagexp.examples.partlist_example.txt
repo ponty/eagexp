@@ -1,9 +1,9 @@
 $ python3 -m eagexp.examples.partlist_example
 raw_partlist of /usr/share/eagle/projects/examples/singlesided/singlesided.sch
-'''
+-----------------------------
 Partlist
 
-Exported from singlesided.sch at 31 May 2020 20:55:38
+Exported from singlesided.sch at 1 Jun 2020 07:49:15
 
 EAGLE Version 6.6.0 Copyright (c) 1988-2014 CadSoft
 
@@ -24,13 +24,13 @@ Q1                      XTAL/S          QS           special        1
 R1       2.2k           R-EU_0207/10    0207/10      rcl            1
 U1       78L05          78LXXZ          TO92         linear         1
 
-'''
+-----------------------------
 
 raw_partlist of /usr/share/eagle/projects/examples/singlesided/singlesided.brd
-'''
+-----------------------------
 Partlist
 
-Exported from singlesided.brd at 31 May 2020 20:55:40
+Exported from singlesided.brd at 1 Jun 2020 07:49:17
 
 EAGLE Version 6.6.0 Copyright (c) 1988-2014 CadSoft
 
@@ -51,10 +51,166 @@ Q1                      QS           special        (1550 250)            R0
 R1       2.2k           0207/10      rcl            (900 350)             R0
 U1       78L05          TO92         linear         (1950 650)            R270
 
-'''
+-----------------------------
 
 structured_partlist of /usr/share/eagle/projects/examples/singlesided/singlesided.sch
-([], [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}])
+(   ['part', 'value', 'device', 'package', 'library', 'sheet'],
+    [   {   'device': 'E2,5-6',
+            'library': 'polcap',
+            'package': 'E2,5-6',
+            'part': 'C1',
+            'sheet': '1',
+            'value': '10u'},
+        {   'device': 'E2,5-6',
+            'library': 'polcap',
+            'package': 'E2,5-6',
+            'part': 'C2',
+            'sheet': '1',
+            'value': '10u'},
+        {   'device': 'C-EU025-025X050',
+            'library': 'rcl',
+            'package': 'C025-025X050',
+            'part': 'C3',
+            'sheet': '1',
+            'value': '10n'},
+        {   'device': 'C-EU025-025X050',
+            'library': 'rcl',
+            'package': 'C025-025X050',
+            'part': 'C4',
+            'sheet': '1',
+            'value': '10n'},
+        {   'device': 'C2.5/2',
+            'library': 'capacitor-wima',
+            'package': 'C2,5-2',
+            'part': 'C5',
+            'sheet': '1',
+            'value': '27p'},
+        {   'device': 'C2.5/2',
+            'library': 'capacitor-wima',
+            'package': 'C2,5-2',
+            'part': 'C6',
+            'sheet': '1',
+            'value': '27p'},
+        {   'device': '1N4148',
+            'library': 'diode',
+            'package': 'DO35-10',
+            'part': 'D1',
+            'sheet': '1',
+            'value': '1N4148'},
+        {   'device': 'PIC16F84AP',
+            'library': 'microchip',
+            'package': 'DIL18',
+            'part': 'IC1',
+            'sheet': '1',
+            'value': '16F84'},
+        {   'device': 'PINHD-1X20',
+            'library': 'PINHEAD',
+            'package': '1X20',
+            'part': 'J1',
+            'sheet': '1',
+            'value': ''},
+        {   'device': 'XTAL/S',
+            'library': 'special',
+            'package': 'QS',
+            'part': 'Q1',
+            'sheet': '1',
+            'value': ''},
+        {   'device': 'R-EU_0207/10',
+            'library': 'rcl',
+            'package': '0207/10',
+            'part': 'R1',
+            'sheet': '1',
+            'value': '2.2k'},
+        {   'device': '78LXXZ',
+            'library': 'linear',
+            'package': 'TO92',
+            'part': 'U1',
+            'sheet': '1',
+            'value': '78L05'}])
 
 structured_partlist of /usr/share/eagle/projects/examples/singlesided/singlesided.brd
-([], [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}])
+(   ['part', 'value', 'package', 'library', 'position', '(mil)', 'orientation'],
+    [   {   '(mil)': ')',
+            'library': 'polcap',
+            'orientation': 'R0',
+            'package': 'E2,5-6',
+            'part': 'C1',
+            'position': '(1950 400',
+            'value': '10u'},
+        {   '(mil)': ')',
+            'library': 'polcap',
+            'orientation': 'R0',
+            'package': 'E2,5-6',
+            'part': 'C2',
+            'position': '(1950 900',
+            'value': '10u'},
+        {   '(mil)': ')',
+            'library': 'rcl',
+            'orientation': 'R180',
+            'package': 'C025-025X050',
+            'part': 'C3',
+            'position': '(1950 200',
+            'value': '10n'},
+        {   '(mil)': '0)',
+            'library': 'rcl',
+            'orientation': 'R180',
+            'package': 'C025-025X050',
+            'part': 'C4',
+            'position': '(1950 110',
+            'value': '10n'},
+        {   '(mil)': ')',
+            'library': 'capacitor-wima',
+            'orientation': 'R270',
+            'package': 'C2,5-2',
+            'part': 'C5',
+            'position': '(1700 500',
+            'value': '27p'},
+        {   '(mil)': ')',
+            'library': 'capacitor-wima',
+            'orientation': 'R90',
+            'package': 'C2,5-2',
+            'part': 'C6',
+            'position': '(1250 250',
+            'value': '27p'},
+        {   '(mil)': '',
+            'library': 'diode',
+            'orientation': 'R0',
+            'package': 'DO35-10',
+            'part': 'D1',
+            'position': '(900 200)',
+            'value': '1N4148'},
+        {   '(mil)': ')',
+            'library': 'microchip',
+            'orientation': 'R180',
+            'package': 'DIL18',
+            'part': 'IC1',
+            'position': '(1100 700',
+            'value': '16F84'},
+        {   '(mil)': '0)',
+            'library': 'PINHEAD',
+            'orientation': 'R180',
+            'package': '1X20',
+            'part': 'J1',
+            'position': '(1050 140',
+            'value': ''},
+        {   '(mil)': ')',
+            'library': 'special',
+            'orientation': 'R0',
+            'package': 'QS',
+            'part': 'Q1',
+            'position': '(1550 250',
+            'value': ''},
+        {   '(mil)': '',
+            'library': 'rcl',
+            'orientation': 'R0',
+            'package': '0207/10',
+            'part': 'R1',
+            'position': '(900 350)',
+            'value': '2.2k'},
+        {   '(mil)': ')',
+            'library': 'linear',
+            'orientation': 'R270',
+            'package': 'TO92',
+            'part': 'U1',
+            'position': '(1950 650',
+            'value': '78L05'}])
