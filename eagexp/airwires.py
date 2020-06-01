@@ -1,5 +1,4 @@
-import tempfile
-
+from backports import tempfile
 from path import Path
 
 from eagexp.cmd import command_eagle
@@ -27,26 +26,22 @@ if (board) {
 
 def airwires(board, showgui=0):
     "search for airwires in eagle board"
-    board = Path(board).expand().abspath()
+    with tempfile.TemporaryDirectory() as temp_dir:
+        board = Path(board).expand().abspath()
 
-    file_out = tempfile.NamedTemporaryFile(suffix=".txt", delete=0)
-    file_out.close()
+        file_out = Path(temp_dir) / "out.txt"
 
-    ulp = ulp_templ.replace("FILE_NAME", file_out.name)
+        ulp = ulp_templ.replace("FILE_NAME", file_out)
 
-    file_ulp = tempfile.NamedTemporaryFile(suffix=".ulp", delete=0)
-    file_ulp.write(ulp.encode("utf-8"))
-    file_ulp.close()
+        file_ulp = Path(temp_dir) / "out.ulp"
+        file_ulp.write_text(ulp.encode("utf-8"))
 
-    commands = [
-        "run " + file_ulp.name,
-        "quit",
-    ]
-    command_eagle(board, commands=commands, showgui=showgui)
+        commands = [
+            "run " + file_ulp,
+            "quit",
+        ]
+        command_eagle(board, commands=commands, showgui=showgui)
 
-    n = int(Path(file_out.name).text())
+        n = int(file_out.text())
 
-    Path(file_out.name).remove()
-    Path(file_ulp.name).remove()
-
-    return n
+        return n

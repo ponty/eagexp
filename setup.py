@@ -2,7 +2,6 @@ import os.path
 
 from setuptools import setup
 
-
 NAME = "eagexp"
 
 # get __version__
@@ -48,6 +47,7 @@ install_requires = [
     "PyScreenshot",
     "easyprocess",
     "pyvirtualdisplay",
+    "backports.tempfile",
 ]
 
 setup(

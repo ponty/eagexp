@@ -1,7 +1,8 @@
 import logging
-import tempfile
 
+from backports import tempfile
 from entrypoint2 import entrypoint
+from path import Path
 from PIL import Image, ImageOps
 
 from eagexp import __version__
@@ -63,20 +64,20 @@ def export_image(
     if command is not None:
         cmds += [command]
 
-    if mirror:
-        f = tempfile.NamedTemporaryFile(suffix=".png", prefix="eagexp_")
-        fout = f.name
-    else:
-        fout = output
+    with tempfile.TemporaryDirectory() as temp_dir:
+        if mirror:
+            fout = Path(temp_dir) / "out.png"
+        else:
+            fout = output
 
-    commands = export_command(
-        output=fout, output_type="image", commands=cmds, resolution=resolution
-    )
-    command_eagle(input=input, timeout=timeout, commands=commands, showgui=showgui)
+        commands = export_command(
+            output=fout, output_type="image", commands=cmds, resolution=resolution
+        )
+        command_eagle(input=input, timeout=timeout, commands=commands, showgui=showgui)
 
-    if mirror:
-        im = Image.open(fout)
-        # save dpi info
-        info = im.info
-        im = ImageOps.mirror(im)
-        im.save(output, **info)
+        if mirror:
+            im = Image.open(fout)
+            # save dpi info
+            info = im.info
+            im = ImageOps.mirror(im)
+            im.save(output, **info)

@@ -1,5 +1,6 @@
-from eagexp import partlist
 import pprint
+
+from eagexp import partlist
 
 sch = "/usr/share/eagle/projects/examples/singlesided/singlesided.sch"
 brd = "/usr/share/eagle/projects/examples/singlesided/singlesided.brd"

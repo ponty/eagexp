@@ -2,7 +2,7 @@ from pprint import pprint
 
 from path import Path
 
-from eagexp.partlist import raw_partlist, structured_partlist, parse_partlist
+from eagexp.partlist import parse_partlist, raw_partlist, structured_partlist
 
 EXAMPLES = Path("/usr/share/eagle/projects/examples")
 

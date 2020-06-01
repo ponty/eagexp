@@ -1,7 +1,6 @@
 import logging
-import os
-import tempfile
 
+from backports import tempfile
 from entrypoint2 import entrypoint
 from path import Path
 
@@ -83,15 +82,13 @@ def raw_partlist(input, timeout=20, showgui=False):
     :rtype: string
     """
 
-    output = tempfile.NamedTemporaryFile(
-        prefix="eagexp_", suffix=".partlist", delete=0
-    ).name
-    export_partlist_to_file(
-        input=input, output=output, timeout=timeout, showgui=showgui
-    )
-    s = Path(output).text(encoding="latin1")
-    os.remove(output)
-    return s
+    with tempfile.TemporaryDirectory() as temp_dir:
+        output = Path(temp_dir) / "out.png"
+        export_partlist_to_file(
+            input=input, output=output, timeout=timeout, showgui=showgui
+        )
+        s = Path(output).text(encoding="latin1")
+        return s
 
 
 def structured_partlist(input, timeout=20, showgui=False):

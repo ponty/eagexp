@@ -1,7 +1,7 @@
 import logging
 import os
-import tempfile
 
+from backports import tempfile
 from easyprocess import EasyProcess
 from entrypoint2 import entrypoint
 from path import Path
@@ -93,17 +93,17 @@ def pil_image3d(
     """
     same as export_image3d, but there is no output file, PIL object is returned instead
     """
-    f = tempfile.NamedTemporaryFile(suffix=".png", prefix="eagexp_")
-    output = f.name
+    with tempfile.TemporaryDirectory() as temp_dir:
+        output = Path(temp_dir) / "out.png"
 
-    export_image3d(
-        input,
-        output=output,
-        size=size,
-        pcb_rotate=pcb_rotate,
-        timeout=timeout,
-        showgui=showgui,
-    )
+        export_image3d(
+            input,
+            output=output,
+            size=size,
+            pcb_rotate=pcb_rotate,
+            timeout=timeout,
+            showgui=showgui,
+        )
 
-    im = Image.open(output)
-    return im
+        im = Image.open(output)
+        return im

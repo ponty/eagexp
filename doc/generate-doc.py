@@ -17,8 +17,8 @@ commands = [
     "python3 -m eagexp.image3d /usr/share/eagle/projects/examples/singlesided/singlesided.brd cli_3d.png",
     "python3 -m eagexp.partlist /usr/share/eagle/projects/examples/singlesided/singlesided.brd",
     "python3 -m eagexp.image --help",
-    'python3 -m eagexp.image3d --help',
-    'python3 -m eagexp.partlist --help',
+    "python3 -m eagexp.image3d --help",
+    "python3 -m eagexp.partlist --help",
 ]
 
 # python -m eagexp.image ~/.eagle/projects/examples/singlesided/singlesided.brd cli_brd.png

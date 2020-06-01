@@ -1,5 +1,4 @@
-import tempfile
-
+from backports import tempfile
 from path import Path
 
 from eagexp.image3d import export_image3d
@@ -9,11 +8,10 @@ EXAMPLES = Path("/usr/share/eagle/projects/examples")
 
 
 def export(fin, **kwargs):
-    fout = tempfile.NamedTemporaryFile(prefix="eagexp_test_", suffix=".png", delete=0)
-    fout = Path(fout.name)
-    export_image3d(fin, fout, showgui=VISIBLE, **kwargs)
-    assert fout.exists()
-    # path(fout.name).remove()
+    with tempfile.TemporaryDirectory() as temp_dir:
+        fout = Path(temp_dir) / "out.png"
+        export_image3d(fin, fout, showgui=VISIBLE, **kwargs)
+        assert fout.exists()
 
 
 def test_all():

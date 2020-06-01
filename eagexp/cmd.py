@@ -1,4 +1,3 @@
-from pykeyboard import PyKeyboard
 import os
 import shutil
 import tempfile
@@ -6,6 +5,7 @@ import time
 
 from easyprocess import EasyProcess
 from path import Path
+from pykeyboard import PyKeyboard
 from pyvirtualdisplay import Display
 
 from eagexp.util import norm_path
