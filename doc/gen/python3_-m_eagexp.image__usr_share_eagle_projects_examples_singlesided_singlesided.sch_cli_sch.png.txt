@@ -1,0 +1,1 @@
+$ python3 -m eagexp.image /usr/share/eagle/projects/examples/singlesided/singlesided.sch cli_sch.png

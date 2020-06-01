@@ -1,0 +1,23 @@
+$ python3 -m eagexp.partlist /usr/share/eagle/projects/examples/singlesided/singlesided.sch
+Partlist
+
+Exported from singlesided.sch at 31 May 2020 20:56:06
+
+EAGLE Version 6.6.0 Copyright (c) 1988-2014 CadSoft
+
+Assembly variant: 
+
+Part     Value          Device          Package      Library        Sheet
+
+C1       10u            E2,5-6          E2,5-6       polcap         1
+C2       10u            E2,5-6          E2,5-6       polcap         1
+C3       10n            C-EU025-025X050 C025-025X050 rcl            1
+C4       10n            C-EU025-025X050 C025-025X050 rcl            1
+C5       27p            C2.5/2          C2,5-2       capacitor-wima 1
+C6       27p            C2.5/2          C2,5-2       capacitor-wima 1
+D1       1N4148         1N4148          DO35-10      diode          1
+IC1      16F84          PIC16F84AP      DIL18        microchip      1
+J1                      PINHD-1X20      1X20         PINHEAD        1
+Q1                      XTAL/S          QS           special        1
+R1       2.2k           R-EU_0207/10    0207/10      rcl            1
+U1       78L05          78LXXZ          TO92         linear         1

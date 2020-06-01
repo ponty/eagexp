@@ -99,7 +99,9 @@ Vagrant.configure(2) do |config|
   sudo python3 -m pip install tox
   
 # doc dependencies
-  
+  sudo apt-get install -y npm xtightvncviewer
+  sudo npm install -g npx
+
   "
       config.vm.provision "shell", inline: $script
           

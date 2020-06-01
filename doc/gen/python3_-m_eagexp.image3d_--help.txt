@@ -1,0 +1,23 @@
+$ python3 -m eagexp.image3d --help
+usage: image3d.py [-h] [-s SIZE] [-p PCB_ROTATE] [-t TIMEOUT] [--showgui]
+                  [--debug] [--version]
+                  input output
+
+Exporting eagle .brd file into 3D image file using Eagle3D and povray. If
+export is blocked somehow (e.g. popup window is displayed) then after timeout
+operation is canceled with exception. Problem can be investigated by setting
+'showgui' flag.
+
+positional arguments:
+  input                 eagle .brd file name
+  output                image file name (.png)
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -s SIZE, --size SIZE  tuple(width, size), image size
+  -p PCB_ROTATE, --pcb-rotate PCB_ROTATE
+  -t TIMEOUT, --timeout TIMEOUT
+                        operation is canceled after this timeout (sec)
+  --showgui             eagle GUI is displayed
+  --debug               set logging level to DEBUG
+  --version             show program's version number and exit

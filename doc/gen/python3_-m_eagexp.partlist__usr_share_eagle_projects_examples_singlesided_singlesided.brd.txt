@@ -1,0 +1,23 @@
+$ python3 -m eagexp.partlist /usr/share/eagle/projects/examples/singlesided/singlesided.brd
+Partlist
+
+Exported from singlesided.brd at 31 May 2020 20:56:14
+
+EAGLE Version 6.6.0 Copyright (c) 1988-2014 CadSoft
+
+Assembly variant: 
+
+Part     Value          Package      Library        Position (mil)        Orientation
+
+C1       10u            E2,5-6       polcap         (1950 400)            R0
+C2       10u            E2,5-6       polcap         (1950 900)            R0
+C3       10n            C025-025X050 rcl            (1950 200)            R180
+C4       10n            C025-025X050 rcl            (1950 1100)           R180
+C5       27p            C2,5-2       capacitor-wima (1700 500)            R270
+C6       27p            C2,5-2       capacitor-wima (1250 250)            R90
+D1       1N4148         DO35-10      diode          (900 200)             R0
+IC1      16F84          DIL18        microchip      (1100 700)            R180
+J1                      1X20         PINHEAD        (1050 1400)           R180
+Q1                      QS           special        (1550 250)            R0
+R1       2.2k           0207/10      rcl            (900 350)             R0
+U1       78L05          TO92         linear         (1950 650)            R270

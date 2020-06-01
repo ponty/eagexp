@@ -1,0 +1,15 @@
+$ python3 -m eagexp.partlist --help
+usage: partlist.py [-h] [-t TIMEOUT] [-s] [--debug] [--version] input
+
+print partlist text delivered by eagle
+
+positional arguments:
+  input                 .sch or .brd file name
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -t TIMEOUT, --timeout TIMEOUT
+                        int
+  -s, --showgui         Bool, True -> do not hide eagle GUI
+  --debug               set logging level to DEBUG
+  --version             show program's version number and exit
