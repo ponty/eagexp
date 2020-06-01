@@ -170,20 +170,7 @@ Start the example program:
 <!-- embedme doc/gen/python3_-m_eagexp.examples.image3d_example.txt -->
 ```console
 $ python3 -m eagexp.examples.image3d_example
-Traceback (most recent call last):
-  File "/usr/lib/python3.6/runpy.py", line 193, in _run_module_as_main
-    "__main__", mod_spec)
-  File "/usr/lib/python3.6/runpy.py", line 85, in _run_code
-    exec(code, run_globals)
-  File "/home/vagrant/.tox/eagexp/py3-doc/lib/python3.6/site-packages/eagexp/examples/image3d_example.py", line 18, in <module>
-    brd, "api_3d_xrot.png", pcb_rotate=(180, 0, 0), size=(200, 150)
-  File "/home/vagrant/.tox/eagexp/py3-doc/lib/python3.6/site-packages/eagexp/image3d.py", line 84, in export_image3d
-    callback=render,
-  File "/home/vagrant/.tox/eagexp/py3-doc/lib/python3.6/site-packages/eagexp/cmd.py", line 108, in command_eagle
-    callback(tmp_dir, tmp_input)
-  File "/home/vagrant/.tox/eagexp/py3-doc/lib/python3.6/site-packages/eagexp/image3d.py", line 60, in render
-    s = s.replace(templ % ("x", 0), templ % ("x", pcb_rotate[0]))
-TypeError: a bytes-like object is required, not 'str'
+
 ```
 
 Result:
@@ -245,7 +232,7 @@ raw_partlist of /usr/share/eagle/projects/examples/singlesided/singlesided.sch
 -----------------------------
 Partlist
 
-Exported from singlesided.sch at 1 Jun 2020 07:49:15
+Exported from singlesided.sch at 1 Jun 2020 10:15:55
 
 EAGLE Version 6.6.0 Copyright (c) 1988-2014 CadSoft
 
@@ -272,7 +259,7 @@ raw_partlist of /usr/share/eagle/projects/examples/singlesided/singlesided.brd
 -----------------------------
 Partlist
 
-Exported from singlesided.brd at 1 Jun 2020 07:49:17
+Exported from singlesided.brd at 1 Jun 2020 10:15:57
 
 EAGLE Version 6.6.0 Copyright (c) 1988-2014 CadSoft
 
@@ -486,7 +473,7 @@ Start the eagexp module directly with python:
 $ python3 -m eagexp.partlist /usr/share/eagle/projects/examples/singlesided/singlesided.sch
 Partlist
 
-Exported from singlesided.sch at 1 Jun 2020 07:49:43
+Exported from singlesided.sch at 1 Jun 2020 10:16:34
 
 EAGLE Version 6.6.0 Copyright (c) 1988-2014 CadSoft
 
@@ -548,7 +535,7 @@ Start the eagexp module directly with python:
 $ python3 -m eagexp.partlist /usr/share/eagle/projects/examples/singlesided/singlesided.brd
 Partlist
 
-Exported from singlesided.brd at 1 Jun 2020 07:49:50
+Exported from singlesided.brd at 1 Jun 2020 10:16:42
 
 EAGLE Version 6.6.0 Copyright (c) 1988-2014 CadSoft
 
@@ -609,30 +596,11 @@ usage: image.py [-h] [-t TIMEOUT] [-p PALETTE] [-r RESOLUTION] [-l LAYERS]
 Exporting eagle .sch or .brd file into image file. If export is blocked
 somehow (e.g. popup window is displayed) then after timeout operation is
 canceled with exception. Problem can be investigated by setting 'showgui'
-flag.
-
-Exporting generates an image file with a format corresponding to the given
-filename extension. The following image formats are available:
-
-.bmp    Windows Bitmap Files
-
-.png    Portable Network Graphics Files
-
-.pbm    Portable Bitmap Files
-
-.pgm    Portable Grayscale Bitmap Files
-
-.ppm    Portable Pixelmap Files
-
-.tif    TIFF Files
-
-.xbm    X Bitmap Files
-
-.xpm    X Pixmap Files
+flag. Exporting generates an image file. Only PNG format is supported
 
 positional arguments:
   input                 eagle .sch or .brd file name
-  output                image file name, existing file will be removed first!
+  output                image file name (e.g. 'eagle.png')
 
 optional arguments:
   -h, --help            show this help message and exit

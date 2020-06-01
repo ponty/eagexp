@@ -3,7 +3,7 @@ raw_partlist of /usr/share/eagle/projects/examples/singlesided/singlesided.sch
 -----------------------------
 Partlist
 
-Exported from singlesided.sch at 1 Jun 2020 07:49:15
+Exported from singlesided.sch at 1 Jun 2020 10:15:55
 
 EAGLE Version 6.6.0 Copyright (c) 1988-2014 CadSoft
 
@@ -30,7 +30,7 @@ raw_partlist of /usr/share/eagle/projects/examples/singlesided/singlesided.brd
 -----------------------------
 Partlist
 
-Exported from singlesided.brd at 1 Jun 2020 07:49:17
+Exported from singlesided.brd at 1 Jun 2020 10:15:57
 
 EAGLE Version 6.6.0 Copyright (c) 1988-2014 CadSoft
 

@@ -1,7 +1,7 @@
 $ python3 -m eagexp.partlist /usr/share/eagle/projects/examples/singlesided/singlesided.sch
 Partlist
 
-Exported from singlesided.sch at 1 Jun 2020 07:49:43
+Exported from singlesided.sch at 1 Jun 2020 10:16:34
 
 EAGLE Version 6.6.0 Copyright (c) 1988-2014 CadSoft
 
