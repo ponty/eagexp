@@ -22,6 +22,9 @@ matrix:
       python: 3.8
       dist: bionic
 
+    - name: 3.9_bionic
+      python: 3.9
+      dist: bionic
 addons:
   apt:
     packages:
