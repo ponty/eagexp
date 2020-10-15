@@ -88,7 +88,8 @@ def command_eagle(input, commands=[], timeout=TIMEOUT, showgui=False, callback=N
                         accept_freeware_license()
                         accept_tries += 1
                 if t > timeout:
-                    raise EagleError("eagle return code is not zero, proc=" + str(p))
+                    p.stop()
+                    raise EagleError("eagle timeout:" + str(p))
 
     curdir = Path.getcwd()
     curdir = norm_path(curdir)
