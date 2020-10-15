@@ -1,4 +1,4 @@
-eagexp can export [eagle][3] partlist or image (2D/3D) of schematic or board.
+eagexp can export [Eagle][3] 6.6.0 partlist or image (2D/3D) of schematic or board in headless mode.
 
 ![](/doc/gen/api_brd_50.png)
 ![](/doc/gen/api_3d_size3.png)
@@ -19,12 +19,14 @@ Links:
 
 
 Features:
- - written in python
+ - Eagle 6.6.0 support only
+ - written in Python
  - it can be used as library or as a command line program
  - headless processing using [Xvfb][1] and [pyvirtualdisplay][2]
  - timeout
  - 3D image export using Eagle3D and [povray][4]
  - calculate airwires
+ - tested only on Linux
  
 Known problems:
  - slow: eagle is opened and closed for each export
@@ -45,7 +47,7 @@ Installation
  * install [povray][4] (optional for 3D)
  * install [Pillow][5]
  * install [pyvirtualdisplay][2] , [Xvfb][1]
- * install the program:
+ * install eagexp:
 
 ```console
 $ python3 -m pip install eagexp
@@ -60,8 +62,17 @@ $ sudo apt-get install povray  python-pil xvfb
 $ python3 -m  pip install eagexp
 ```
 
-Eagle was dropped from the repository in the later Ubuntu versions.
+Eagle was dropped from the Ubuntu repository in the later versions.
 
+On Ubuntu 18.04 
+
+```console
+$ sudo dpkg --add-architecture i386
+$ EAGLE_DEB=$(mktemp --suffix .deb); wget -O $EAGLE_DEB 'http://archive.ubuntu.com/ubuntu/pool/multiverse/e/eagle/eagle_6.6.0-2_i386.deb' 
+$ sudo apt-get install $EAGLE_DEB
+$ sudo apt-get install povray  python-pil xvfb
+$ python3 -m  pip install eagexp
+```
 
 Export from python code
 =======================
@@ -656,7 +667,7 @@ optional arguments:
 [1]: http://en.wikipedia.org/wiki/Xvfb
 [2]: https://github.com/ponty/PyVirtualDisplay
 [3]: http://www.cadsoftusa.com/
-[4]: http://www.povray.org/
+[4]: https://en.wikipedia.org/wiki/POV-Ray
 [5]: https://pypi.org/project/Pillow/
 
 
