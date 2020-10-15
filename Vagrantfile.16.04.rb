@@ -12,7 +12,7 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "ubuntu/focal64"
+  config.vm.box = "ubuntu/xenial64"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -43,19 +43,15 @@ Vagrant.configure(2) do |config|
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
   #
-  config.vm.provider "virtualbox" do |vb|
-    # Display the VirtualBox GUI when booting the machine
-    #vb.gui = true
- 
-    # Customize the amount of memory on the VM:
-    # vb.memory = "2048"
+   config.vm.provider "virtualbox" do |vb|
+  #   # Display the VirtualBox GUI when booting the machine
+  #   vb.gui = true
+  #
+  #   # Customize the amount of memory on the VM:
+  #   vb.memory = "1024"
 
-    vb.name = "eagexp_2004"
-
-    # 	https://bugs.launchpad.net/cloud-images/+bug/1829625
-    vb.customize ["modifyvm", :id, "--uart1", "0x3F8", "4"]
-    vb.customize ["modifyvm", :id, "--uartmode1", "file", "./ttyS0.log"]
-  end
+     vb.name = "eagexp_1604"
+    end
   #
   # View the documentation for the provider you are using for more
   # information on available options.
@@ -92,16 +88,7 @@ Vagrant.configure(2) do |config|
   sudo apt-get install -y mc python3-pip xvfb
 
 # eagle
-  #sudo apt-get install -y eagle:i386
-  TEMP_DEB=$(mktemp --suffix .deb)
-  wget -O $TEMP_DEB 'http://archive.ubuntu.com/ubuntu/pool/multiverse/e/eagle/eagle_6.6.0-2_i386.deb' 
-  dpkg-deb -x $TEMP_DEB /tmp/PackageFolder
-  dpkg-deb --control $TEMP_DEB /tmp/PackageFolder/DEBIAN
-  sed -i -e 's/libssl1.0.0/libssl1.1/g' /tmp/PackageFolder/DEBIAN/control      
-  dpkg -b /tmp/PackageFolder /tmp/eagle.deb
-  sudo apt-get install -y /tmp/eagle.deb
-  sudo ln -s /usr/lib/i386-linux-gnu/libssl.so.1.1 /usr/lib/i386-linux-gnu/libssl.so.1.0.0
-  sudo ln -s /usr/lib/i386-linux-gnu/libcrypto.so.1.1 /usr/lib/i386-linux-gnu/libcrypto.so.1.0.0
+  sudo apt-get install -y eagle:i386
   
 # project dependencies
   sudo apt-get install -y scrot povray  python-pil xserver-xephyr
@@ -121,4 +108,5 @@ Vagrant.configure(2) do |config|
        
 end
      
-
+# export VAGRANT_VAGRANTFILE=Vagrantfile.16.04.rb;export VAGRANT_DOTFILE_PATH=.vagrant_${VAGRANT_VAGRANTFILE}
+# vagrant up && vagrant ssh
