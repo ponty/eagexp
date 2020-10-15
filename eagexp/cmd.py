@@ -4,7 +4,6 @@ import tempfile
 import time
 
 from easyprocess import EasyProcess
-from path import Path
 from pykeyboard import PyKeyboard
 from pyvirtualdisplay import Display
 
@@ -91,7 +90,7 @@ def command_eagle(input, commands=[], timeout=TIMEOUT, showgui=False, callback=N
                     p.stop()
                     raise EagleError("eagle timeout:" + str(p))
 
-    curdir = Path.getcwd()
+    curdir = os.getcwd()
     curdir = norm_path(curdir)
 
     os.chdir(tmp_dir)

@@ -1,14 +1,17 @@
 import os
+from os.path import dirname
 from time import sleep
 
 import fabric
 import vagrant
 from entrypoint2 import entrypoint
-from path import Path
 
 # pip3 install fabric vncdotool python-vagrant entrypoint2
 
-DIR = Path(__file__).parent.parent.parent
+DIR = __file__
+DIR = dirname(DIR)
+DIR = dirname(DIR)
+DIR = dirname(DIR)
 
 
 class Options:

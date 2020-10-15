@@ -1,9 +1,12 @@
+from os.path import join
+
 from backports import tempfile
 from easyprocess import EasyProcess
-from path import Path
 from pyvirtualdisplay.display import Display
 
-EXAMPLES = Path("/usr/share/eagle/projects/examples")
+from tutil import dir_files
+
+EXAMPLES = "/usr/share/eagle/projects/examples"
 
 
 def export(params, fail=0):
@@ -19,12 +22,10 @@ def export(params, fail=0):
 
 def test():
     with tempfile.TemporaryDirectory() as temp_dir:
-        o = Path(temp_dir) / "out.png"
+        o = join(temp_dir, "out.png")
 
-        sch_ls = EXAMPLES.walkfiles("*.sch")
-        brd_ls = EXAMPLES.walkfiles("*.brd")
-        sch_ls = list(sch_ls)
-        brd_ls = list(brd_ls)
+        sch_ls = dir_files(EXAMPLES, "*.sch")
+        brd_ls = dir_files(EXAMPLES, "*.brd")
         all = sch_ls + brd_ls
 
         i = all[0]

@@ -1,15 +1,16 @@
 import logging
 import os
+from os.path import dirname, exists, join
+from shutil import copy
 
 from backports import tempfile
 from easyprocess import EasyProcess
 from entrypoint2 import entrypoint
-from path import Path
 from PIL import Image
 
 from eagexp import __version__
 from eagexp.cmd import EagleError, command_eagle
-from eagexp.util import norm_path
+from eagexp.util import norm_path, read_text, write_text
 
 log = logging.getLogger(__name__)
 log.debug("version=" + __version__)
@@ -42,8 +43,8 @@ def export_image3d(
         raise ValueError('Input extension is not ".brd", brd=' + str(input))
 
     commands = []
-    eagle3d = Path(__file__).dirname() / "eagle3d"
-    ulp = (eagle3d / "3d50.ulp").abspath()
+    eagle3d = join(dirname(__file__), "eagle3d")
+    ulp = norm_path(join(eagle3d, "3d50.ulp"))
 
     commands += ["RUN " + ulp]
     commands += ["QUIT"]
@@ -56,17 +57,17 @@ def export_image3d(
         # http://library.thinkquest.org/3285/language/cmdln.html
 
         templ = "#local pcb_rotate_%s = %s"
-        pov = Path(f.replace(".brd", ".pov"))
-        if not os.path.exists(pov):
+        pov = f.replace(".brd", ".pov")
+        if not exists(pov):
             raise EagleError("missing pov file: %s" % pov)
         # log.debug("pov file %s content: %s", pov, pov.read_text())
         if pcb_rotate != (0, 0, 0):
-            s = pov.read_text()
+            s = read_text(pov)
             s = s.replace(templ % ("x", 0), templ % ("x", pcb_rotate[0]))
             s = s.replace(templ % ("y", 0), templ % ("y", pcb_rotate[1]))
             s = s.replace(templ % ("z", 0), templ % ("z", pcb_rotate[2]))
-            pov.write_text(s)
-        fpng = Path(f.replace(".brd", ".png"))
+            write_text(pov, s)
+        fpng = f.replace(".brd", ".png")
         cmd = []
         cmd += ["povray"]
         cmd += ["-d"]  # no display
@@ -77,9 +78,9 @@ def export_image3d(
         cmd += ["-L" + eagle3d]
         cmd += [pov]
         p = EasyProcess(cmd).call()
-        if not fpng.exists():
+        if not exists(fpng):
             raise EagleError("povray error, proc=%s" % p)
-        fpng.copy(output)
+        copy(fpng, output)
 
     command_eagle(
         input=input,
@@ -97,7 +98,7 @@ def pil_image3d(
     same as export_image3d, but there is no output file, PIL object is returned instead
     """
     with tempfile.TemporaryDirectory() as temp_dir:
-        output = Path(temp_dir) / "out.png"
+        output = join(temp_dir, "out.png")
 
         export_image3d(
             input,

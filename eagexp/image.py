@@ -1,8 +1,8 @@
 import logging
+from os.path import join
 
 from backports import tempfile
 from entrypoint2 import entrypoint
-from path import Path
 from PIL import Image, ImageOps
 
 from eagexp import __version__
@@ -66,7 +66,7 @@ def export_image(
 
     with tempfile.TemporaryDirectory() as temp_dir:
         if mirror:
-            fout = Path(temp_dir) / "out.png"
+            fout = join(temp_dir, "out.png")
         else:
             fout = output
 

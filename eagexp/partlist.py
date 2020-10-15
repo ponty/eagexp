@@ -1,13 +1,13 @@
 import logging
+from os.path import join
 
 from backports import tempfile
 from entrypoint2 import entrypoint
-from path import Path
 
 from eagexp import __version__
 from eagexp.cmd import command_eagle
 from eagexp.exp import export_command
-from eagexp.util import norm_path
+from eagexp.util import norm_path, read_text
 
 log = logging.getLogger(__name__)
 log.debug("version=" + __version__)
@@ -83,11 +83,11 @@ def raw_partlist(input, timeout=20, showgui=False):
     """
 
     with tempfile.TemporaryDirectory() as temp_dir:
-        output = Path(temp_dir) / "out.png"
+        output = join(temp_dir, "out.png")
         export_partlist_to_file(
             input=input, output=output, timeout=timeout, showgui=showgui
         )
-        s = Path(output).text(encoding="latin1")
+        s = read_text(output, encoding="latin1")
         return s
 
 

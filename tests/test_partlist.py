@@ -1,10 +1,11 @@
+from os.path import dirname, join
 from pprint import pprint
 
-from path import Path
-
 from eagexp.partlist import parse_partlist, raw_partlist, structured_partlist
+from eagexp.util import norm_path
+from tutil import dir_files
 
-EXAMPLES = Path("/usr/share/eagle/projects/examples")
+EXAMPLES = "/usr/share/eagle/projects/examples"
 
 
 def export(fin, **kwargs):
@@ -13,8 +14,8 @@ def export(fin, **kwargs):
 
 
 def check_dir(d):
-    sch_ls = Path(d).expand().walkfiles("*.sch")
-    brd_ls = Path(d).expand().walkfiles("*.brd")
+    sch_ls = dir_files(norm_path(d), "*.sch")
+    brd_ls = dir_files(norm_path(d), "*.brd")
     sch_ls = list(sch_ls)
     brd_ls = list(brd_ls)
     all = sch_ls + brd_ls
@@ -28,7 +29,7 @@ def test_examples():
 
 
 def test_data():
-    data = Path(__file__).parent / "data"
+    data = join(dirname(__file__), "data")
     check_dir(data)
 
 

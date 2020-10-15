@@ -1,24 +1,24 @@
+from os.path import exists, join
+
 from backports import tempfile
-from path import Path
 
 from eagexp.image import export_image
+from tutil import dir_files
 
 VISIBLE = 0
-EXAMPLES = Path("/usr/share/eagle/projects/examples")
+EXAMPLES = "/usr/share/eagle/projects/examples"
 
 
 def export(fin, **kwargs):
     with tempfile.TemporaryDirectory() as temp_dir:
-        fout = Path(temp_dir) / "out.png"
+        fout = join(temp_dir, "out.png")
         export_image(fin, fout, showgui=VISIBLE, **kwargs)
-        assert fout.exists()
+        assert exists(fout)
 
 
 def test_all():
-    sch_ls = EXAMPLES.walkfiles("*.sch")
-    brd_ls = EXAMPLES.walkfiles("*.brd")
-    sch_ls = list(sch_ls)
-    brd_ls = list(brd_ls)
+    sch_ls = dir_files(EXAMPLES, "*.sch")
+    brd_ls = dir_files(EXAMPLES, "*.brd")
     all = sch_ls + brd_ls
 
     for x in all:
@@ -26,10 +26,8 @@ def test_all():
 
 
 def test_options():
-    sch_ls = EXAMPLES.walkfiles("*.sch")
-    brd_ls = EXAMPLES.walkfiles("*.brd")
-    sch_ls = list(sch_ls)
-    brd_ls = list(brd_ls)
+    sch_ls = dir_files(EXAMPLES, "*.sch")
+    brd_ls = dir_files(EXAMPLES, "*.brd")
     all = sch_ls + brd_ls
 
     export(brd_ls[0], layers=["top"])
