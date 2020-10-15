@@ -57,6 +57,9 @@ def export_image3d(
 
         templ = "#local pcb_rotate_%s = %s"
         pov = Path(f.replace(".brd", ".pov"))
+        if not os.path.exists(pov):
+            raise EagleError("missing pov file: %s" % pov)
+        # log.debug("pov file %s content: %s", pov, pov.read_text())
         if pcb_rotate != (0, 0, 0):
             s = pov.read_text()
             s = s.replace(templ % ("x", 0), templ % ("x", pcb_rotate[0]))
