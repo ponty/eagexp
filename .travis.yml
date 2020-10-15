@@ -2,6 +2,10 @@ language: python
 
 matrix:
   include:
+    - name: 3.6_xenial
+      python: 3.6
+      dist: xenial
+
     - name: 2.7_bionic
       python: 2.7
       dist: bionic
@@ -30,15 +34,13 @@ addons:
 before_install:
   - sudo dpkg --add-architecture i386
   - wget -O eagle.deb 'http://archive.ubuntu.com/ubuntu/pool/multiverse/e/eagle/eagle_6.6.0-2_i386.deb'
-  - sudo dpkg -i eagle.deb || true
-  - sudo apt --fix-broken -y install
+  - sudo apt-get install -y ./eagle.deb
   # - sudo apt-get install -y eagle:i386
+
 install:
   - if [ ${TRAVIS_PYTHON_VERSION:0:1} == "2" ]; then PYTHON=python; else PYTHON=python3; fi
-  # - if [ ${TRAVIS_OS_NAME} == "windows" ]; then PYTHON=python; fi
   - $PYTHON -m pip install $PIPUSER --upgrade -r requirements-test.txt
   - $PYTHON -m pip install $PIPUSER --upgrade .
-  # - if [ ${TRAVIS_OS_NAME} == "osx" ]; then mkdir /tmp/.X11-unix;sudo chmod 1777 /tmp/.X11-unix;sudo chown root /tmp/.X11-unix/; fi
   - $PYTHON -m pip install -r requirements-test.txt
   - $PYTHON -m pip install --upgrade .
 
