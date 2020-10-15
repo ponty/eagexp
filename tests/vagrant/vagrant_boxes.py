@@ -68,7 +68,7 @@ def run_box(options, vagrantfile, cmds):
 config = {
     "server2004": ("Vagrantfile", ["tox"],),
     "server1804": ("Vagrantfile.18.04.rb", ["tox"],),
-    "server1604": ("Vagrantfile.16.04.rb", ["tox"],),
+    "server1604": ("Vagrantfile.16.04.rb", ["tox -e py37"],),
 }
 
 
