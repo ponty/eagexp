@@ -15,10 +15,24 @@ matrix:
       dist: bionic
 
     - name: 3.9_bionic
-      python: 3.9
+      python: 3.9-dev
       dist: bionic
+
+    - name: 3.7_focal
+      python: 3.7
+      dist: focal
+
+    - name: 3.8_focal
+      python: 3.8
+      dist: focal
+
+    - name: 3.9_focal
+      python: 3.9-dev
+      dist: focal
+
 addons:
   apt:
+    update: true
     packages:
       - xvfb
       - xserver-xephyr
@@ -28,8 +42,12 @@ addons:
 
 before_install:
   - sudo dpkg --add-architecture i386
-  - wget -O eagle.deb 'http://archive.ubuntu.com/ubuntu/pool/multiverse/e/eagle/eagle_6.6.0-2_i386.deb'
-  - sudo apt-get install -y ./eagle.deb
+  - wget -O /tmp/eagle.deb 'http://archive.ubuntu.com/ubuntu/pool/multiverse/e/eagle/eagle_6.6.0-2_i386.deb'
+  - if [ ${TRAVIS_DIST} == "focal" ]; then dpkg-deb -x /tmp/eagle.deb ./dir;dpkg-deb --control /tmp/eagle.deb ./dir/DEBIAN; sed -i -e 's/libssl1.0.0/libssl1.1/g' ./dir/DEBIAN/control;rm /tmp/eagle.deb;dpkg -b ./dir /tmp/eagle.deb; fi
+  - if [ ${TRAVIS_DIST} == "focal" ]; then sudo apt-get upgrade -y; fi  # TODO: remove this when focal is stable
+  - sudo apt-get install -y /tmp/eagle.deb
+  - if [ ${TRAVIS_DIST} == "focal" ]; then sudo ln -s /usr/lib/i386-linux-gnu/libssl.so.1.1 /usr/lib/i386-linux-gnu/libssl.so.1.0.0; fi
+  - if [ ${TRAVIS_DIST} == "focal" ]; then sudo ln -s /usr/lib/i386-linux-gnu/libcrypto.so.1.1 /usr/lib/i386-linux-gnu/libcrypto.so.1.0.0; fi
   # - sudo apt-get install -y eagle:i386
 
 install:
