@@ -45,6 +45,8 @@ def export_image3d(
     commands = []
     eagle3d = join(dirname(__file__), "eagle3d")
     ulp = norm_path(join(eagle3d, "3d50.ulp"))
+    if not exists(ulp):
+        raise EagleError("missing file:%s" % ulp)
 
     commands += ["RUN " + ulp]
     commands += ["QUIT"]
