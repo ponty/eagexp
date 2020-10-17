@@ -96,7 +96,7 @@ def command_eagle(input, commands=[], timeout=TIMEOUT, showgui=False, callback=N
     os.chdir(tmp_dir)
 
     with Display(visible=showgui, size=(800, 600)):
-        time.sleep(1)
+        # time.sleep(1)
         call_eagle()
 
     os.chdir(curdir)
