@@ -15,7 +15,7 @@ matrix:
       dist: bionic
 
     - name: 3.9_bionic
-      python: 3.9-dev
+      python: 3.9
       dist: bionic
 
     - name: 3.7_focal
@@ -27,7 +27,7 @@ matrix:
       dist: focal
 
     - name: 3.9_focal
-      python: 3.9-dev
+      python: 3.9
       dist: focal
 
 addons:
