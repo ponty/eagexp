@@ -3,7 +3,7 @@ import os
 from os.path import dirname, exists, join
 from shutil import copy
 
-from backports import tempfile
+import tempfile
 from easyprocess import EasyProcess
 from entrypoint2 import entrypoint
 from PIL import Image

@@ -1,6 +1,6 @@
 from os.path import join
 
-from backports import tempfile
+import tempfile
 
 from eagexp.cmd import command_eagle
 from eagexp.util import norm_path, read_text, write_text

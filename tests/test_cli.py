@@ -1,6 +1,6 @@
 from os.path import join
 
-from backports import tempfile
+import tempfile
 from easyprocess import EasyProcess
 from pyvirtualdisplay.display import Display
 

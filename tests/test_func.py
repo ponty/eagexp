@@ -1,6 +1,6 @@
 from os.path import exists, join
 
-from backports import tempfile
+import tempfile
 
 from eagexp.image import export_image
 from tutil import dir_files

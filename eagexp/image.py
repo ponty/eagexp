@@ -1,7 +1,7 @@
 import logging
 from os.path import join
 
-from backports import tempfile
+import tempfile
 from entrypoint2 import entrypoint
 from PIL import Image, ImageOps
 

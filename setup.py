@@ -44,7 +44,6 @@ install_requires = [
     "PyScreenshot",
     "easyprocess",
     "pyvirtualdisplay",
-    "backports.tempfile",
 ]
 
 setup(
