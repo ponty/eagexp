@@ -13,8 +13,7 @@ Links:
 
 
 
-[![Build Status](https://travis-ci.org/ponty/eagexp.svg?branch=master)](https://travis-ci.org/ponty/eagexp)
-
+![workflow](https://github.com/ponty/eagexp/actions/workflows/main.yml/badge.svg)
 
 
 
