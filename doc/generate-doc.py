@@ -41,7 +41,7 @@ def main():
     try:
         os.chdir("gen")
         for cmd in commands:
-            with SmartDisplay() as disp:
+            with SmartDisplay():
                 logging.info("cmd: %s", cmd)
                 fname_base = cmd.replace(" ", "_").replace("/", "_").replace("~", "_")
                 fname = fname_base + ".txt"
@@ -61,4 +61,4 @@ def main():
     embedme.call()
     print(embedme.stdout)
     assert embedme.return_code == 0
-    assert not "but file does not exist" in embedme.stdout
+    assert "but file does not exist" not in embedme.stdout
