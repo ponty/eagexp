@@ -41,7 +41,7 @@ RAW_PARTLIST_singlesided_sch = """
 
   EAGLE Version 6.5.0 Copyright (c) 1988-2013 CadSoft
 
-  Assembly variant: 
+  Assembly variant:
 
   Part     Value          Device          Package      Library        Sheet
 
@@ -67,7 +67,7 @@ RAW_PARTLIST_singlesided_brd = """
 
   EAGLE Version 6.5.0 Copyright (c) 1988-2013 CadSoft
 
-  Assembly variant: 
+  Assembly variant:
 
   Part     Value          Package      Library        Position (mil)        Orientation
 
