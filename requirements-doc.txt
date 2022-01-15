@@ -1,6 +1,7 @@
-pytest
+autoflake
+isort
+black
+
 pillow
 pyscreenshot
 path.py
-mypy
-flake8

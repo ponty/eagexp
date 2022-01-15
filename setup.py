@@ -22,9 +22,6 @@ PACKAGES = [
 ]
 
 
-# extra = {}
-# if sys.version_info >= (3,):
-#     extra["use_2to3"] = True
 
 classifiers = [
     # Get more strings from
@@ -62,4 +59,7 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=install_requires,
+    # package_data={
+    #     NAME: ["py.typed"],
+    # },
 )
