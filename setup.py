@@ -22,7 +22,6 @@ PACKAGES = [
 ]
 
 
-
 classifiers = [
     # Get more strings from
     # http://www.python.org/pypi?%3Aaction=list_classifiers

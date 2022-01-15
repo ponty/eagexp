@@ -1,9 +1,8 @@
+import tempfile
 from os.path import join
 
-import tempfile
 from easyprocess import EasyProcess
 from pyvirtualdisplay.display import Display
-
 from tutil import dir_files
 
 EXAMPLES = "/usr/share/eagle/projects/examples"

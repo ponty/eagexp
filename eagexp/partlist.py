@@ -1,7 +1,7 @@
 import logging
+import tempfile
 from os.path import join
 
-import tempfile
 from entrypoint2 import entrypoint
 
 from eagexp import __version__

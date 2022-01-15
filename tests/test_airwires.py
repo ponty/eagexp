@@ -1,7 +1,8 @@
 from os.path import join
 
-from eagexp.airwires import airwires
 from tutil import dir_files
+
+from eagexp.airwires import airwires
 
 EXAMPLES = "/usr/share/eagle/projects/examples"
 

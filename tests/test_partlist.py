@@ -1,9 +1,10 @@
 from os.path import dirname, join
 from pprint import pprint
 
+from tutil import dir_files
+
 from eagexp.partlist import parse_partlist, raw_partlist, structured_partlist
 from eagexp.util import norm_path
-from tutil import dir_files
 
 EXAMPLES = "/usr/share/eagle/projects/examples"
 

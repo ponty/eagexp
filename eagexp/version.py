@@ -4,8 +4,7 @@ from pyvirtualdisplay.display import Display
 
 
 def extract_version(txt):
-    """This function tries to extract the version from the help text
-    """
+    """This function tries to extract the version from the help text"""
     words = txt.replace(",", " ").split()
     version = None
     for x in reversed(words):
@@ -20,7 +19,7 @@ def extract_version(txt):
 
 def version():
     """
-    return eagle version. 
+    return eagle version.
     It does not work without X!
 
     :rtype: string

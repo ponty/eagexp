@@ -1,9 +1,9 @@
+import tempfile
 from os.path import exists, join
 
-import tempfile
+from tutil import dir_files
 
 from eagexp.image3d import export_image3d
-from tutil import dir_files
 
 VISIBLE = 0
 EXAMPLES = "/usr/share/eagle/projects/examples"
