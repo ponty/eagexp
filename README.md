@@ -48,13 +48,13 @@ Installation
  * install [pyvirtualdisplay][2] , [Xvfb][1]
  * install eagexp:
 
-```console
+```sh
 $ python3 -m pip install eagexp
 ```
 
 On Ubuntu 16.04 
 
-```console
+```sh
 $ sudo dpkg --add-architecture i386
 $ sudo apt-get install eagle
 $ sudo apt-get install povray  python-pil xvfb
@@ -65,7 +65,7 @@ Eagle was dropped from the Ubuntu repository in the later versions.
 
 On Ubuntu 18.04 
 
-```console
+```sh
 $ sudo dpkg --add-architecture i386
 $ EAGLE_DEB=$(mktemp --suffix .deb); wget -O $EAGLE_DEB 'http://archive.ubuntu.com/ubuntu/pool/multiverse/e/eagle/eagle_6.6.0-2_i386.deb' 
 $ sudo apt-get install $EAGLE_DEB
@@ -75,7 +75,7 @@ $ python3 -m  pip install eagexp
 
 On Ubuntu 20.04 
 
-```console
+```sh
 $ TEMP_DEB=$(mktemp --suffix .deb)
 $ wget -O $TEMP_DEB 'http://archive.ubuntu.com/ubuntu/pool/multiverse/e/eagle/eagle_6.6.0-2_i386.deb' 
 $ dpkg-deb -x $TEMP_DEB /tmp/PackageFolder
@@ -124,7 +124,7 @@ if __name__ == "__main__":
 
 <!-- embedme doc/gen/python3_-m_eagexp.examples.image_example.txt -->
 Run it:
-```console
+```sh
 $ python3 -m eagexp.examples.image_example
 
 ```
@@ -178,7 +178,7 @@ if __name__ == "__main__":
 
 Start the example program:
 <!-- embedme doc/gen/python3_-m_eagexp.examples.image3d_example.txt -->
-```console
+```sh
 $ python3 -m eagexp.examples.image3d_example
 
 ```
@@ -237,13 +237,13 @@ if __name__ == "__main__":
 
 Start the example program:
 <!-- embedme doc/gen/python3_-m_eagexp.examples.partlist_example.txt -->
-```console
+```sh
 $ python3 -m eagexp.examples.partlist_example
 raw_partlist of /usr/share/eagle/projects/examples/singlesided/singlesided.sch
 -----------------------------
 Partlist
 
-Exported from singlesided.sch at 13 Feb 2022 08:23:03
+Exported from singlesided.sch at 13 Feb 2022 14:17:40
 
 EAGLE Version 6.6.0 Copyright (c) 1988-2014 CadSoft
 
@@ -270,7 +270,7 @@ raw_partlist of /usr/share/eagle/projects/examples/singlesided/singlesided.brd
 -----------------------------
 Partlist
 
-Exported from singlesided.brd at 13 Feb 2022 08:23:03
+Exported from singlesided.brd at 13 Feb 2022 14:17:41
 
 EAGLE Version 6.6.0 Copyright (c) 1988-2014 CadSoft
 
@@ -465,7 +465,7 @@ Export image
 Start the eagexp module directly with python:
 
 <!-- embedme doc/gen/python3_-m_eagexp.image__usr_share_eagle_projects_examples_singlesided_singlesided.sch_cli_sch.png.txt -->
-```console
+```sh
 $ python3 -m eagexp.image /usr/share/eagle/projects/examples/singlesided/singlesided.sch cli_sch.png
 
 ```
@@ -480,11 +480,11 @@ Export partlist
 Start the eagexp module directly with python:
 
 <!-- embedme doc/gen/python3_-m_eagexp.partlist__usr_share_eagle_projects_examples_singlesided_singlesided.sch.txt -->
-```console
+```sh
 $ python3 -m eagexp.partlist /usr/share/eagle/projects/examples/singlesided/singlesided.sch
 Partlist
 
-Exported from singlesided.sch at 13 Feb 2022 08:23:30
+Exported from singlesided.sch at 13 Feb 2022 14:18:05
 
 EAGLE Version 6.6.0 Copyright (c) 1988-2014 CadSoft
 
@@ -516,7 +516,7 @@ Export image
 Start the eagexp module directly with python:
 
 <!-- embedme doc/gen/python3_-m_eagexp.image__usr_share_eagle_projects_examples_singlesided_singlesided.brd_cli_brd.png.txt -->
-```console
+```sh
 $ python3 -m eagexp.image /usr/share/eagle/projects/examples/singlesided/singlesided.brd cli_brd.png
 
 ```
@@ -529,7 +529,7 @@ Export 3D image
 Start the eagexp module directly with python:
 
 <!-- embedme doc/gen/python3_-m_eagexp.image3d__usr_share_eagle_projects_examples_singlesided_singlesided.brd_cli_3d.png.txt -->
-```console
+```sh
 $ python3 -m eagexp.image3d /usr/share/eagle/projects/examples/singlesided/singlesided.brd cli_3d.png
 
 ```
@@ -542,11 +542,11 @@ Export partlist
 Start the eagexp module directly with python:
 
 <!-- embedme doc/gen/python3_-m_eagexp.partlist__usr_share_eagle_projects_examples_singlesided_singlesided.brd.txt -->
-```console
+```sh
 $ python3 -m eagexp.partlist /usr/share/eagle/projects/examples/singlesided/singlesided.brd
 Partlist
 
-Exported from singlesided.brd at 13 Feb 2022 08:23:35
+Exported from singlesided.brd at 13 Feb 2022 14:18:10
 
 EAGLE Version 6.6.0 Copyright (c) 1988-2014 CadSoft
 
@@ -587,7 +587,7 @@ if __name__ == "__main__":
 ```
 
 <!-- embedme doc/gen/python3_-m_eagexp.examples.airwires.txt -->
-```console
+```sh
 $ python3 -m eagexp.examples.airwires
 39
 0
@@ -598,7 +598,7 @@ Command-line help
 
 
 <!-- embedme doc/gen/python3_-m_eagexp.image_--help.txt -->
-```console
+```sh
 $ python3 -m eagexp.image --help
 usage: image.py [-h] [-t TIMEOUT] [-p PALETTE] [-r RESOLUTION] [-l LAYERS]
                 [-c COMMAND] [-m] [-s] [--debug] [--version]
@@ -632,7 +632,7 @@ optional arguments:
 ```
 
 <!-- embedme doc/gen/python3_-m_eagexp.image3d_--help.txt -->
-```console
+```sh
 $ python3 -m eagexp.image3d --help
 usage: image3d.py [-h] [-s SIZE] [-p PCB_ROTATE] [-t TIMEOUT] [--showgui]
                   [--debug] [--version]
@@ -659,7 +659,7 @@ optional arguments:
 ```
 
 <!-- embedme doc/gen/python3_-m_eagexp.partlist_--help.txt -->
-```console
+```sh
 $ python3 -m eagexp.partlist --help
 usage: partlist.py [-h] [-t TIMEOUT] [-s] [--debug] [--version] input
 
