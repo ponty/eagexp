@@ -6,7 +6,7 @@ from shutil import copy
 
 from easyprocess import EasyProcess
 from entrypoint2 import entrypoint
-from PIL import Image
+from PIL import Image  # type: ignore
 
 from eagexp import __version__
 from eagexp.cmd import EagleError, command_eagle

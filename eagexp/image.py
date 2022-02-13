@@ -3,7 +3,7 @@ import tempfile
 from os.path import join
 
 from entrypoint2 import entrypoint
-from PIL import Image, ImageOps
+from PIL import Image, ImageOps  # type: ignore
 
 from eagexp import __version__
 from eagexp.cmd import command_eagle

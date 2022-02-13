@@ -200,8 +200,9 @@ Example for partlist export:
 ```py
 # eagexp/examples/partlist_example.py
 
-from eagexp import partlist
 import pprint
+
+from eagexp import partlist
 
 sch = "/usr/share/eagle/projects/examples/singlesided/singlesided.sch"
 brd = "/usr/share/eagle/projects/examples/singlesided/singlesided.brd"
@@ -242,7 +243,7 @@ raw_partlist of /usr/share/eagle/projects/examples/singlesided/singlesided.sch
 -----------------------------
 Partlist
 
-Exported from singlesided.sch at 1 Jun 2020 10:15:55
+Exported from singlesided.sch at 13 Feb 2022 08:23:03
 
 EAGLE Version 6.6.0 Copyright (c) 1988-2014 CadSoft
 
@@ -269,7 +270,7 @@ raw_partlist of /usr/share/eagle/projects/examples/singlesided/singlesided.brd
 -----------------------------
 Partlist
 
-Exported from singlesided.brd at 1 Jun 2020 10:15:57
+Exported from singlesided.brd at 13 Feb 2022 08:23:03
 
 EAGLE Version 6.6.0 Copyright (c) 1988-2014 CadSoft
 
@@ -483,7 +484,7 @@ Start the eagexp module directly with python:
 $ python3 -m eagexp.partlist /usr/share/eagle/projects/examples/singlesided/singlesided.sch
 Partlist
 
-Exported from singlesided.sch at 1 Jun 2020 10:16:34
+Exported from singlesided.sch at 13 Feb 2022 08:23:30
 
 EAGLE Version 6.6.0 Copyright (c) 1988-2014 CadSoft
 
@@ -545,7 +546,7 @@ Start the eagexp module directly with python:
 $ python3 -m eagexp.partlist /usr/share/eagle/projects/examples/singlesided/singlesided.brd
 Partlist
 
-Exported from singlesided.brd at 1 Jun 2020 10:16:42
+Exported from singlesided.brd at 13 Feb 2022 08:23:35
 
 EAGLE Version 6.6.0 Copyright (c) 1988-2014 CadSoft
 
