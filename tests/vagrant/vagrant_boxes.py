@@ -80,12 +80,12 @@ config = {
     ),
     "server1804": (
         "Vagrantfile.18.04.rb",
-        ["tox"],
-    ),
-    "server1604": (
-        "Vagrantfile.16.04.rb",
         ["tox -e py37"],
     ),
+    # "server1604": (
+    #     "Vagrantfile.16.04.rb",
+    #     ["tox -e py37"],
+    # ),
 }
 
 
