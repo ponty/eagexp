@@ -4,9 +4,8 @@ from os.path import dirname, join
 from time import sleep
 
 import fabric
-from entrypoint2 import entrypoint
-
 import vagrant
+from entrypoint2 import entrypoint
 
 # pip3 install fabric vncdotool python-vagrant entrypoint2
 
@@ -74,18 +73,14 @@ def run_box(options, vagrantfile, cmds):
 
 
 config = {
-    "server2004": (
+    "server2204": (
         "Vagrantfile",
         ["tox"],
     ),
-    "server1804": (
-        "Vagrantfile.18.04.rb",
-        ["tox -e py37"],
+    "server2004": (
+        "Vagrantfile.20.04.rb",
+        ["tox -e py38"],
     ),
-    # "server1604": (
-    #     "Vagrantfile.16.04.rb",
-    #     ["tox -e py37"],
-    # ),
 }
 
 

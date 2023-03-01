@@ -30,22 +30,21 @@ TEMP_DEB=$(mktemp --suffix .deb)
 wget -O $TEMP_DEB 'http://archive.ubuntu.com/ubuntu/pool/multiverse/e/eagle/eagle_6.6.0-2_i386.deb'
 dpkg-deb -x $TEMP_DEB /tmp/PackageFolder
 dpkg-deb --control $TEMP_DEB /tmp/PackageFolder/DEBIAN
-sed -i -e 's/libssl1.0.0/libssl1.1/g' /tmp/PackageFolder/DEBIAN/control
+sed -i -e 's/libssl1.0.0/libssl3/g' /tmp/PackageFolder/DEBIAN/control
 dpkg -b /tmp/PackageFolder /tmp/eagle.deb
 sudo apt-get install -y /tmp/eagle.deb
-sudo ln -s /usr/lib/i386-linux-gnu/libssl.so.1.1 /usr/lib/i386-linux-gnu/libssl.so.1.0.0
-sudo ln -s /usr/lib/i386-linux-gnu/libcrypto.so.1.1 /usr/lib/i386-linux-gnu/libcrypto.so.1.0.0
+sudo ln -s /usr/lib/i386-linux-gnu/libssl.so.3 /usr/lib/i386-linux-gnu/libssl.so.1.0.0
+sudo ln -s /usr/lib/i386-linux-gnu/libcrypto.so.3 /usr/lib/i386-linux-gnu/libcrypto.so.1.0.0
 
 # project dependencies
 sudo apt-get install -y scrot 
 sudo apt-get install -y povray
 sudo apt-get install -y python3-pil
 sudo apt-get install -y xserver-xephyr
-sudo apt-get install -y libjpeg-dev
 
 # test dependencies
 sudo python3 -m pip install tox
 
 # doc dependencies
-sudo apt-get install -y npm xtightvncviewer 
+sudo apt-get install -y npm xtightvncviewer
 sudo npm install --global embedme
