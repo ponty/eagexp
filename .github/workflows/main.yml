@@ -32,18 +32,35 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
       run: |
-        sudo dpkg --add-architecture i386
-        wget -O /tmp/eagle.deb 'http://archive.ubuntu.com/ubuntu/pool/multiverse/e/eagle/eagle_6.6.0-2_i386.deb'
-        dpkg-deb -x /tmp/eagle.deb ./dir;dpkg-deb --control /tmp/eagle.deb ./dir/DEBIAN; sed -i -e 's/libssl1.0.0/libssl1.1/g' ./dir/DEBIAN/control;rm /tmp/eagle.deb;dpkg -b ./dir /tmp/eagle.deb
         sudo apt-get update
-        sudo apt-get upgrade -y
+        # sudo apt-get upgrade -y
         sudo apt-get install -y xvfb xserver-xephyr scrot povray povray-includes
-        sudo apt-get install -y /tmp/eagle.deb
-        sudo ln -s /usr/lib/i386-linux-gnu/libssl.so.1.1 /usr/lib/i386-linux-gnu/libssl.so.1.0.0
-        sudo ln -s /usr/lib/i386-linux-gnu/libcrypto.so.1.1 /usr/lib/i386-linux-gnu/libcrypto.so.1.0.0
+        sudo dpkg --add-architecture i386
+        sudo apt-get update
         python -m pip install --upgrade pip
         python -m pip install .
         pip install -r requirements-test.txt
+        wget -O /tmp/eagle.deb 'http://archive.ubuntu.com/ubuntu/pool/multiverse/e/eagle/eagle_6.6.0-2_i386.deb'
+    - name: Install ubuntu-20.04 dependencies eagle.deb
+      if: matrix.os == 'ubuntu-20.04'
+      run: |
+        dpkg-deb -x /tmp/eagle.deb ./dir
+        dpkg-deb --control /tmp/eagle.deb ./dir/DEBIAN
+        sed -i -e 's/libssl1.0.0/libssl1.1/g' ./dir/DEBIAN/control
+        rm /tmp/eagle.deb;dpkg -b ./dir /tmp/eagle.deb
+        sudo apt-get install -y /tmp/eagle.deb
+        sudo ln -s /usr/lib/i386-linux-gnu/libssl.so.1.1 /usr/lib/i386-linux-gnu/libssl.so.1.0.0
+        sudo ln -s /usr/lib/i386-linux-gnu/libcrypto.so.1.1 /usr/lib/i386-linux-gnu/libcrypto.so.1.0.0
+    - name: Install ubuntu-22.04 dependencies eagle.deb
+      if: matrix.os == 'ubuntu-22.04'
+      run: |
+        dpkg-deb -x /tmp/eagle.deb ./dir
+        dpkg-deb --control /tmp/eagle.deb ./dir/DEBIAN
+        sed -i -e 's/libssl1.0.0/libssl3/g' ./dir/DEBIAN/control
+        rm /tmp/eagle.deb;dpkg -b ./dir /tmp/eagle.deb
+        sudo apt-get install -y /tmp/eagle.deb
+        sudo ln -s /usr/lib/i386-linux-gnu/libssl.so.3 /usr/lib/i386-linux-gnu/libssl.so.1.0.0
+        sudo ln -s /usr/lib/i386-linux-gnu/libcrypto.so.3 /usr/lib/i386-linux-gnu/libcrypto.so.1.0.0
     - name: Test with pytest
       run: |
         cd tests
